@@ -7,7 +7,6 @@ from mdformat.renderer.typing import Render
 
 def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser, e.g. by adding a plugin: `mdit.use(myplugin)`"""
-    pass
 
 
 def _render_table(node: RenderTreeNode, context: RenderContext) -> str:
