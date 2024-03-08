@@ -7,7 +7,7 @@
 [cov-link]: https://codecov.io/gh/executablebooks/mdformat-gfm-alerts
  -->
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for [GitHub "Alerts"](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) (and [community discussion](https://github.com/orgs/community/discussions/16925)).
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for [GitHub "Alerts"](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts). "Alerts" are a block quote variation of admonitions that were proposed in this [community discussion](https://github.com/orgs/community/discussions/16925) and are currently a separate extension of the [GFM (GitHub-Flavored Markdown) syntax](https://github.github.com/gfm).
 
 ## `mdformat` Usage
 
