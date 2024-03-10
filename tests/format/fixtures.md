@@ -31,7 +31,7 @@
 > Advises about risks or negative outcomes of certain actions.
 .
 
-2022 (to 2023) Syntax
+Replaces 2022 with 2023 Syntax
 .
 > **Note**
 > This is a note
@@ -44,4 +44,39 @@
 
 > [!WARNING]
 > This is a warning
+.
+
+Fixes formatting issues introduced without this extension
+.
+# Section A
+
+- List A
+  - List Nested
+
+>  \[!NOTE\] Useful information that users should know, even when skimming content.
+
+> \[!CAUTION\]
+> Advises about risks or negative outcomes of certain actions.
+>
+> ```py
+> import antigravity
+> ```
+>
+> - A quoted list
+.
+# Section A
+
+- List A
+  - List Nested
+
+> [!NOTE] Useful information that users should know, even when skimming content.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+>
+> ```py
+> import antigravity
+> ```
+>
+> - A quoted list
 .
