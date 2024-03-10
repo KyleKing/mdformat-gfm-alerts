@@ -101,6 +101,6 @@ def gfm_alert_plugin_factory(
     """Generate the plugin function."""
 
     def gfm_alert_plugin(md: MarkdownIt) -> None:
-        md.block.ruler.before("fence", prefix, logic)
+        md.block.ruler.before("blockquote", prefix, logic)
 
     return gfm_alert_plugin
