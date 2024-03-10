@@ -53,9 +53,9 @@ Fixes formatting issues introduced without this extension
 - List A
   - List Nested
 
->  \[!NOTE\] Useful information that users should know, even when skimming content.
+>  \[!Note\] Useful information that users should know, even when skimming content.
 
-> \[!CAUTION\]
+> \[!cAUtIOn\]
 > Advises about risks or negative outcomes of certain actions.
 >
 > ```py

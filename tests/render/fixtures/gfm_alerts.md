@@ -21,3 +21,12 @@ Replaces 2022 with 2023 Syntax
 </div>
 </blockquote>
 .
+
+Test inline syntax
+.
+> \[!Note\] This is an inline "Note"
+.
+<blockquote>
+<div class="admonition note"></div>
+</blockquote>
+.

@@ -67,7 +67,7 @@ def parse_possible_blockquote_admon_factory(
         # Exit if no match for any pattern
         text = state.src[start:]
         regexes = [
-            re.compile(rf"{pat}(?P<inline_content>(?: |<br>)[^\n]+)?")
+            re.compile(rf"{pat}(?P<inline_content>(?: |<br>)[^\n]+)?", re.IGNORECASE)
             for pat in patterns
         ]
         match = next((_m for rx in regexes if (_m := rx.match(text))), None)
