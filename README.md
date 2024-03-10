@@ -54,7 +54,8 @@ md.render(text)
 # </blockquote>
 ```
 
-> [!WARNING]
+> **Warning**
+>
 > This package does not properly handle replacing the `blockquote` outer `div` with a `div` for accessibility. This should be possible with `markdown-it`, but I haven't yet found a way.
 
 ## Contributing
