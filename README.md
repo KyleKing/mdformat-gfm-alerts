@@ -47,11 +47,15 @@ md.use(gfm_alerts_plugin)
 text = "> [!NOTE]\n> Useful information that users should know, even when skimming content. "
 md.render(text)
 # <blockquote>
-# <div class="admonition note">
+# <div class="markdown-alert markdown-alert-note">
+# <p class="markdown-alert-title">Note</p>
 # <p>Useful information that users should know, even when skimming content.</p>
 # </div>
 # </blockquote>
 ```
+
+> [!WARNING]
+> This package does not properly handle replacing the `blockquote` outer `div` with a `div` for accessibility. This should be possible with `markdown-it`, but I haven't yet found a way.
 
 ## Contributing
 
