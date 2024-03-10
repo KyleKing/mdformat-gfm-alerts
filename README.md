@@ -32,6 +32,27 @@ pipx install mdformat
 pipx inject mdformat mdformat-gfm-alerts
 ```
 
+## HTML Rendering
+
+To generate HTML output, `gfm_alerts_plugin` can be imported from `mdit_plugins`. For more guidance on `MarkdownIt`, see the docs: <https://markdown-it-py.readthedocs.io/en/latest/using.html#the-parser>
+
+```py
+from markdown_it import MarkdownIt
+
+from mdformat_gfm_alerts.mdit_plugins import gfm_alerts_plugin
+
+md = MarkdownIt()
+md.use(gfm_alerts_plugin)
+
+text = "> [!NOTE]\n> Useful information that users should know, even when skimming content. "
+md.render(text)
+# <blockquote>
+# <div class="admonition note">
+# <p>Useful information that users should know, even when skimming content.</p>
+# </div>
+# </blockquote>
+```
+
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/KyleKing/mdformat-gfm-alerts/blob/main/CONTRIBUTING.md)
