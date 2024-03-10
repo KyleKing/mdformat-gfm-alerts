@@ -641,84 +641,84 @@ fn main () {
          > This is a note.
          > <br>
 
-- [ ] This is a task list (`-`).
+- \[ \] This is a task list (`-`).
 
   > [!NOTE]
   > This is a note.
 
-- [x] This is a task list with a checked task (`-`).
+- \[x\] This is a task list with a checked task (`-`).
 
   > [!NOTE]
   > This is a note.
 
-- [ ] This is a task list (`-`).
+- \[ \] This is a task list (`-`).
 
   > [!NOTE]<br>This is a one-liner note.
 
-- [x] This is a task list with a checked task (`-`).
+- \[x\] This is a task list with a checked task (`-`).
 
   > [!NOTE]<br>This is a one-liner note.
 
-* [ ] This is a task list (`+`).
+* \[ \] This is a task list (`+`).
 
   > [!NOTE]
   > This is a note.
 
-* [x] This is a task list with a checked task (`+`).
+* \[x\] This is a task list with a checked task (`+`).
 
   > [!NOTE]
   > This is a note.
 
-* [ ] This is a task list (`+`).
+* \[ \] This is a task list (`+`).
 
   > [!NOTE]<br>This is a one-liner note.
 
-* [x] This is a task list with a checked task (`+`).
+* \[x\] This is a task list with a checked task (`+`).
 
   > [!NOTE]<br>This is a one-liner note.
 
-- [ ] This is a task list (`*`).
+- \[ \] This is a task list (`*`).
 
   > [!NOTE]
   > This is a note.
 
-- [x] This is a task list with a checked task (`*`).
+- \[x\] This is a task list with a checked task (`*`).
 
   > [!NOTE]
   > This is a note.
 
-- [ ] This is a task list (`*`).
+- \[ \] This is a task list (`*`).
 
   > [!NOTE]<br>This is a one-liner note.
 
-- [x] This is a task list with a checked task (`*`).
+- \[x\] This is a task list with a checked task (`*`).
 
   > [!NOTE]<br>This is a one-liner note.
 
-1. [ ] This is a task list. The number `1. ` won't be shown.
+1. \[ \] This is a task list. The number `1. ` won't be shown.
 
    > [!NOTE]
    > This is a note.
    > <br>
 
-1. [x] This is a task list with a checked task. The number `1. ` won't be shown.
+1. \[x\] This is a task list with a checked task. The number `1. ` won't be shown.
 
    > [!NOTE]
    > This is a note.
    > <br>
 
-1. [ ] This is a task list. The number `1. ` won't be shown.
+1. \[ \] This is a task list. The number `1. ` won't be shown.
 
    > [!NOTE]<br>This is a one-liner note.
 
-1. [x] This is a task list with a checked task. The number `1. ` won't be shown.
+1. \[x\] This is a task list with a checked task. The number `1. ` won't be shown.
 
    > [!NOTE]<br>This is a one-liner note.
 
-- [ ] This is a task list.
+- \[ \] This is a task list.
   > [!NOTE]
   > This is a note.
-  - [x] This is a task list.
+  - \[x\] This is a task list.
     > [!NOTE]
     > This is a note.
 
@@ -886,41 +886,41 @@ fn main () {
 > [!NOTE]
 > This is a note.
 >
-> - [ ] This is a task list (`-`).
-> - [x] This is a task list with a checked task (`-`).
+> - \[ \] This is a task list (`-`).
+> - \[x\] This is a task list with a checked task (`-`).
 >
-> * [ ] This is a task list (`+`).
-> * [x] This is a task list with a checked task (`+`).
+> * \[ \] This is a task list (`+`).
+> * \[x\] This is a task list with a checked task (`+`).
 >
-> - [ ] This is a task list (`*`).
-> - [x] This is a task list with a checked task (`*`).
+> - \[ \] This is a task list (`*`).
+> - \[x\] This is a task list with a checked task (`*`).
 >
-> 1. [ ] This is a task list.
-> 1. [x] This is a task list with a checked task.
+> 1. \[ \] This is a task list.
+> 1. \[x\] This is a task list with a checked task.
 
 > [!NOTE]
-> - [ ] This is a task list directly in an alert.
+> - \[ \] This is a task list directly in an alert.
 
-- [ ] This is a task list.
+- \[ \] This is a task list.
 
   > [!NOTE]
   > This is a note.
   >
-  > - [ ] This is a task list.
+  > - \[ \] This is a task list.
 
-- [ ] This is a task list.
-
-  > [!NOTE]
-  > - [ ] This is a task list directly in an alert.
-
-- [ ] This is a task list.
+- \[ \] This is a task list.
 
   > [!NOTE]
-  > - [ ] This is a task list directly in an alert.
+  > - \[ \] This is a task list directly in an alert.
 
-  - [x] This is a task list.
+- \[ \] This is a task list.
+
+  > [!NOTE]
+  > - \[ \] This is a task list directly in an alert.
+
+  - \[x\] This is a task list.
     > [!NOTE]
-    > - [x] This is a task list directly in an alert.
+    > - \[x\] This is a task list directly in an alert.
 
 ## table (GitHub Flavored Markdown)
 

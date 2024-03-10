@@ -3,14 +3,18 @@
 from __future__ import annotations
 
 import re
-from typing import Callable, Mapping, NamedTuple
+from collections.abc import Generator
+from contextlib import contextmanager
+from typing import TYPE_CHECKING, Callable, Mapping, NamedTuple
 
 from markdown_it import MarkdownIt
 from markdown_it.rules_block import StateBlock
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
-from mdformat_admon.factories import new_token
 from mdit_py_plugins.utils import is_code_block
+
+if TYPE_CHECKING:
+    from markdown_it.token import Token
 
 PREFIX = "gfm_alert"
 """Prefix used to differentiate the parsed output."""
@@ -88,6 +92,14 @@ def parse_possible_blockquote_admon_factory(
         )
 
     return parse_possible_blockquote_admon
+
+
+# FYI: copied from mdformat_admon.factories
+@contextmanager
+def new_token(state: StateBlock, name: str, kind: str) -> Generator[Token, None, None]:
+    """Creates scoped token."""
+    yield state.push(f"{name}_open", kind, 1)
+    state.push(f"{name}_close", kind, -1)
 
 
 def format_gfm_alert_markup(
