@@ -4,10 +4,7 @@ Adapted from the implementation for `mdformat-admon`:
 <https://github.com/KyleKing/mdformat-admon/blob/cf9a81277e1feac0ce9bf1190efa965ac3d407b2/mdformat_admon/factories/_whitespace_admon_factories.py>
 
 Copied to `mdformat-obsidian`. Try to keep in-sync:
-<https://github.com/KyleKing/mdformat-obsidian/blob/0a8fc3844992e34e92be968428e0cf73c3e41093/mdformat_obsidian/factories/_factories.py>
-
-Note: should probably be renamed to `_gfm_alert_factories`,
-but that would break the above links
+<https://github.com/KyleKing/mdformat-obsidian/blob/8f260e168b3575e6a76b20f53e780c1ba7d68d13/mdformat_obsidian/factories/_obsidian_blockquote_factories.py>
 
 """
 
@@ -34,7 +31,7 @@ def new_token(state: StateBlock, name: str, kind: str) -> Generator[Token, None,
     state.push(f"{name}_close", kind, -1)
 
 
-# FYI: Adapted from mdformat_admon.factories._factories
+# FYI: Adapted from mdformat_admon.factories
 class AlertState(NamedTuple):
     """Frozen state."""
 
@@ -52,6 +49,7 @@ class AlertData(NamedTuple):
 
 
 def parse_possible_blockquote_admon_factory(
+    prefix: str,
     patterns: set[str],
 ) -> Callable[[StateBlock, int, int, bool], AlertData | bool]:
     """Generate the parser function.
@@ -90,7 +88,7 @@ def parse_possible_blockquote_admon_factory(
             parentType=state.parentType,
             lineMax=state.lineMax,
         )
-        state.parentType = "gfm_alert"
+        state.parentType = prefix
 
         return AlertData(
             old_state=old_state,

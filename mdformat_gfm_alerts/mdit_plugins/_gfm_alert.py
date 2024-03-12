@@ -11,7 +11,7 @@ from ..factories import (
     parse_possible_blockquote_admon_factory,
 )
 
-PREFIX = "gfm_alert"
+GFM_ALERT_PREFIX = "gfm_alert"
 """Prefix used to differentiate the parsed output."""
 
 INLINE_SEP = "\n\n"
@@ -36,21 +36,21 @@ def format_gfm_alert_markup(
         f"[!{admonition.meta_text.upper()}]{INLINE_SEP}{admonition.inline_content}"
     )
 
-    with new_token(state, PREFIX, "div") as token:
+    with new_token(state, GFM_ALERT_PREFIX, "div") as token:
         token.attrs = {
             "class": f"markdown-alert markdown-alert-{admonition.meta_text.lower()}",
         }
         token.block = True
         token.map = [start_line, admonition.next_line]
         token.markup = title_line
-        with new_token(state, f"{PREFIX}_title", "p") as tkn_title:
+        with new_token(state, f"{GFM_ALERT_PREFIX}_title", "p") as tkn_title:
             tkn_title.attrs = {"class": "markdown-alert-title"}
 
             tkn_title_txt = state.push("inline", "", 0)
             tkn_title_txt.content = admonition.meta_text.title()
 
         if admonition.inline_content:
-            with new_token(state, f"{PREFIX}_inline", "p"):
+            with new_token(state, f"{GFM_ALERT_PREFIX}_inline", "p"):
                 tkn_inline_txt = state.push("inline", "", 0)
                 tkn_inline_txt.content = admonition.inline_content.strip()
 
@@ -72,7 +72,7 @@ def alert_logic(
     silent: bool,
 ) -> bool:
     """Parse GitHub Alerts."""
-    parser_func = parse_possible_blockquote_admon_factory(PATTERNS)
+    parser_func = parse_possible_blockquote_admon_factory(GFM_ALERT_PREFIX, PATTERNS)
     result = parser_func(state, startLine, endLine, silent)
     if isinstance(result, AlertData):
         format_gfm_alert_markup(state, startLine, admonition=result)
@@ -80,4 +80,4 @@ def alert_logic(
     return result
 
 
-gfm_alert_plugin = gfm_alert_plugin_factory(PREFIX, alert_logic)
+gfm_alert_plugin = gfm_alert_plugin_factory(GFM_ALERT_PREFIX, alert_logic)
