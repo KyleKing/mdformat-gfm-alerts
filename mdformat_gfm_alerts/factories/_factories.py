@@ -1,4 +1,15 @@
-"""GitHub Alerts."""
+"""Logic Factories.
+
+Adapted from the implementation for `mdformat-admon`:
+<https://github.com/KyleKing/mdformat-admon/blob/cf9a81277e1feac0ce9bf1190efa965ac3d407b2/mdformat_admon/factories/_whitespace_admon_factories.py>
+
+Copied to `mdformat-obsidian`. Try to keep in-sync:
+<https://github.com/KyleKing/mdformat-obsidian/blob/0a8fc3844992e34e92be968428e0cf73c3e41093/mdformat_obsidian/factories/_factories.py>
+
+Note: should probably be renamed to `_gfm_alert_factories`,
+but that would break the above links
+
+"""
 
 from __future__ import annotations
 
@@ -13,9 +24,6 @@ from mdit_py_plugins.utils import is_code_block
 
 if TYPE_CHECKING:
     from markdown_it.token import Token
-
-PREFIX = "gfm_alert"
-"""Prefix used to differentiate the parsed output."""
 
 
 # FYI: copied from mdformat_admon.factories
