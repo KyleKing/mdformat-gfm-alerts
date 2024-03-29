@@ -6,12 +6,12 @@ from markdown_it.rules_block import StateBlock
 
 from ..factories import (
     AlertData,
-    gfm_alert_plugin_factory,
+    gfm_alerts_plugin_factory,
     new_token,
     parse_possible_blockquote_admon_factory,
 )
 
-GFM_ALERT_PREFIX = "gfm_alert"
+GFM_ALERTS_PREFIX = "gfm_alert"
 """Prefix used to differentiate the parsed output."""
 
 INLINE_SEP = "\n\n"
@@ -26,7 +26,7 @@ PATTERNS = {
 """Patterns specific to GitHub Alerts."""
 
 
-def format_gfm_alert_markup(
+def format_gfm_alerts_markup(
     state: StateBlock,
     start_line: int,
     admonition: AlertData,
@@ -36,21 +36,21 @@ def format_gfm_alert_markup(
         f"[!{admonition.meta_text.upper()}]{INLINE_SEP}{admonition.inline_content}"
     )
 
-    with new_token(state, GFM_ALERT_PREFIX, "div") as token:
+    with new_token(state, GFM_ALERTS_PREFIX, "div") as token:
         token.attrs = {
             "class": f"markdown-alert markdown-alert-{admonition.meta_text.lower()}",
         }
         token.block = True
         token.map = [start_line, admonition.next_line]
         token.markup = title_line
-        with new_token(state, f"{GFM_ALERT_PREFIX}_title", "p") as tkn_title:
+        with new_token(state, f"{GFM_ALERTS_PREFIX}_title", "p") as tkn_title:
             tkn_title.attrs = {"class": "markdown-alert-title"}
 
             tkn_title_txt = state.push("inline", "", 0)
             tkn_title_txt.content = admonition.meta_text.title()
 
         if admonition.inline_content:
-            with new_token(state, f"{GFM_ALERT_PREFIX}_inline", "p"):
+            with new_token(state, f"{GFM_ALERTS_PREFIX}_inline", "p"):
                 tkn_inline_txt = state.push("inline", "", 0)
                 tkn_inline_txt.content = admonition.inline_content.strip()
 
@@ -72,12 +72,12 @@ def alert_logic(
     silent: bool,
 ) -> bool:
     """Parse GitHub Alerts."""
-    parser_func = parse_possible_blockquote_admon_factory(GFM_ALERT_PREFIX, PATTERNS)
+    parser_func = parse_possible_blockquote_admon_factory(GFM_ALERTS_PREFIX, PATTERNS)
     result = parser_func(state, startLine, endLine, silent)
     if isinstance(result, AlertData):
-        format_gfm_alert_markup(state, startLine, admonition=result)
+        format_gfm_alerts_markup(state, startLine, admonition=result)
         return True
     return result
 
 
-gfm_alert_plugin = gfm_alert_plugin_factory(GFM_ALERT_PREFIX, alert_logic)
+gfm_alerts_plugin = gfm_alerts_plugin_factory(GFM_ALERTS_PREFIX, alert_logic)

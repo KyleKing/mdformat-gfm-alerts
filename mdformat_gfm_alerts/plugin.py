@@ -8,15 +8,15 @@ from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
 
-from .mdit_plugins import GFM_ALERT_PREFIX, INLINE_SEP, gfm_alert_plugin
+from .mdit_plugins import GFM_ALERTS_PREFIX, INLINE_SEP, gfm_alerts_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser to identify Alerts."""
-    mdit.use(gfm_alert_plugin)
+    mdit.use(gfm_alerts_plugin)
 
 
-def _render_gfm_alert(node: RenderTreeNode, context: RenderContext) -> str:
+def _render_gfm_alerts(node: RenderTreeNode, context: RenderContext) -> str:
     """Render a `RenderTreeNode`."""
     title_line = node.markup.replace(INLINE_SEP, "")
     elements = [render for child in node.children if (render := child.render(context))]
@@ -36,7 +36,7 @@ def _no_render(
 # This can be used to overwrite renderer functions of existing syntax
 # or add support for new syntax.
 RENDERERS: Mapping[str, Render] = {
-    GFM_ALERT_PREFIX: _render_gfm_alert,
-    f"{GFM_ALERT_PREFIX}_title": _no_render,
-    f"{GFM_ALERT_PREFIX}_inline": _no_render,
+    GFM_ALERTS_PREFIX: _render_gfm_alerts,
+    f"{GFM_ALERTS_PREFIX}_title": _no_render,
+    f"{GFM_ALERTS_PREFIX}_inline": _no_render,
 }

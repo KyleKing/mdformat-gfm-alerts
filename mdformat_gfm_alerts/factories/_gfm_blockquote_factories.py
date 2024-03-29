@@ -100,13 +100,13 @@ def parse_possible_blockquote_admon_factory(
     return parse_possible_blockquote_admon
 
 
-def gfm_alert_plugin_factory(
+def gfm_alerts_plugin_factory(
     prefix: str,
     logic: Callable[[StateBlock, int, int, bool], bool],
 ) -> Callable[[MarkdownIt], None]:
     """Generate the plugin function."""
 
-    def gfm_alert_plugin(md: MarkdownIt) -> None:
+    def gfm_alerts_plugin(md: MarkdownIt) -> None:
         md.block.ruler.before("blockquote", prefix, logic)
 
-    return gfm_alert_plugin
+    return gfm_alerts_plugin

@@ -1,6 +1,6 @@
-from ._gfm_alert import (
-    GFM_ALERT_PREFIX,
+from ._gfm_alerts import (
+    GFM_ALERTS_PREFIX,
     INLINE_SEP,
-    format_gfm_alert_markup,
-    gfm_alert_plugin,
+    format_gfm_alerts_markup,
+    gfm_alerts_plugin,
 )
