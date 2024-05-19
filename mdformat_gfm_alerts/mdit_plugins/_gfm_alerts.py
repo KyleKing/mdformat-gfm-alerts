@@ -15,7 +15,7 @@ GFM_ALERTS_PREFIX = "gfm_alert"
 """Prefix used to differentiate the parsed output."""
 
 INLINE_SEP = "\n\n"
-"""Optional separator to differentiate the title and ineline content (if present)."""
+"""Separator to differentiate the title and inline content (if present)."""
 
 PATTERNS = {
     # Note '> ' prefix is removed when parsing
