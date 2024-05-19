@@ -32,9 +32,13 @@ def format_gfm_alerts_markup(
     admonition: AlertData,
 ) -> None:
     """Format markup."""
-    title_line = (
-        f"[!{admonition.meta_text.upper()}]{INLINE_SEP}{admonition.inline_content}"
-    )
+    # To fix #2, when the admonition and text are on the same line, push the content
+    #  to the next line. While this is equivalent in the markdown spec, this is
+    #  required for Github
+    newline = "\n"
+
+    meta = f"[!{admonition.meta_text.upper()}]"
+    title_line = f"{meta}{newline}{admonition.inline_content}".rstrip()
 
     with new_token(state, GFM_ALERTS_PREFIX, "div") as token:
         token.attrs = {

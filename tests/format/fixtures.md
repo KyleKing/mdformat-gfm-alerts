@@ -69,7 +69,8 @@ Fixes formatting issues introduced without this extension
 - List A
   - List Nested
 
-> [!NOTE] Useful information that users should know, even when skimming content.
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.

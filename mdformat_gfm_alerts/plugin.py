@@ -8,7 +8,7 @@ from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
 
-from .mdit_plugins import GFM_ALERTS_PREFIX, INLINE_SEP, gfm_alerts_plugin
+from .mdit_plugins import GFM_ALERTS_PREFIX, gfm_alerts_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
@@ -18,7 +18,7 @@ def update_mdit(mdit: MarkdownIt) -> None:
 
 def _render_gfm_alerts(node: RenderTreeNode, context: RenderContext) -> str:
     """Render a `RenderTreeNode`."""
-    title_line = node.markup.replace(INLINE_SEP, "")
+    title_line = node.markup
     elements = [render for child in node.children if (render := child.render(context))]
     # Do not separate the title line from the first row
     return "\n".join([title_line, "\n\n".join(elements)]).rstrip()

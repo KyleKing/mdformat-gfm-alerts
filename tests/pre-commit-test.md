@@ -28,21 +28,25 @@
 > This is a note.\
 > multiple lines with a hard line break (`\`)
 
-> [!NOTE] No character is allowed except a line break.
+> [!NOTE]
+> No character is allowed except a line break.
 > This is a note.
 
-> [!NOTE] No character is allowed except a line break.\
+> [!NOTE]
+> No character is allowed except a line break.\
 > This is a note.
 
 > [!NOTE]
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 Broken since 14 Nov 2023
 
 > [!NOTE]
 
-> [!NOTE]<br><br>
+> [!NOTE]
+> <br>
 
 > [!NOTE]
 > This is a note.
@@ -58,10 +62,14 @@ Broken since 14 Nov 2023
 > [!NOTE]
 > This is a note.
 >
-> > [!NOTE]<br>This is a one-liner note (broken).
+> > [!NOTE]
+> > This is a one-liner note (broken).
 
-> [!NOTE]<br>This is a one-liner note.
-> > [!NOTE]<br>This is a one-liner note (broken).
+> [!NOTE]
+> This is a one-liner note.
+>
+> > [!NOTE]
+> > This is a one-liner note (broken).
 
 > [!NOTE]
 > This is a note.
@@ -72,7 +80,8 @@ Broken since 14 Nov 2023
 > [!NOTE]
 > This is a note.
 >
-> > [!NOTE]<br>This is a one-liner note (broken).
+> > [!NOTE]
+> > This is a one-liner note (broken).
 
 > [!NOTE]
 > This is a note.
@@ -87,43 +96,52 @@ Broken since 14 Nov 2023
 >
 > >
 >
-> [!NOTE]<br>This is a one-liner note (broken).
+> [!NOTE]
+> This is a one-liner note (broken).
 
-> [!NOTE]<br>This is a one-liner note.
-> >
+> [!NOTE]
+> This is a one-liner note.
 >
-> [!NOTE]
-> This is a note (broken).
-
-> [!NOTE]<br>This is a one-liner note.
-> >
->
-> [!NOTE]<br>This is a one-liner note (broken).
-
-> [!NOTE]
-> > [!NOTE]
-> > This is a note (broken).
-
-> [!NOTE]
-> > [!NOTE]<br>This is a one-liner note (broken).
-
-> [!NOTE]
-> > [!NOTE]
-> > This is a note (broken).
-
-> [!NOTE]
-> > [!NOTE]<br>This is a one-liner note (broken).
-
-> [!NOTE]
 > >
 >
 > [!NOTE]
 > This is a note (broken).
 
 > [!NOTE]
+> This is a one-liner note.
+>
 > >
 >
-> [!NOTE]<br>This is a one-liner note (broken).
+> [!NOTE]
+> This is a one-liner note (broken).
+
+> [!NOTE]
+> > [!NOTE]
+> > This is a note (broken).
+
+> [!NOTE]
+> > [!NOTE]
+> > This is a one-liner note (broken).
+
+> [!NOTE]
+> > [!NOTE]
+> > This is a note (broken).
+
+> [!NOTE]
+> > [!NOTE]
+> > This is a one-liner note (broken).
+
+> [!NOTE]
+> >
+>
+> [!NOTE]
+> This is a note (broken).
+
+> [!NOTE]
+> >
+>
+> [!NOTE]
+> This is a one-liner note (broken).
 
 ## block quote
 
@@ -156,7 +174,8 @@ Broken since 14 Nov 2023
 
 > This is a quote.
 >
-> > [!NOTE]<br>This is a one-liner note.
+> > [!NOTE]
+> > This is a one-liner note.
 
 > This is a quote.
 >
@@ -165,7 +184,8 @@ Broken since 14 Nov 2023
 
 > This is a quote.
 >
-> > [!NOTE]<br>This is a one-liner note.
+> > [!NOTE]
+> > This is a one-liner note.
 
 > This is a quote.
 >
@@ -174,7 +194,8 @@ Broken since 14 Nov 2023
 
 > This is a quote.
 >
-> > [!NOTE]<br>This is a one-liner note.
+> > [!NOTE]
+> > This is a one-liner note.
 
 > This is a quote.
 >
@@ -187,7 +208,8 @@ Broken since 14 Nov 2023
 >
 > >
 >
-> [!NOTE]<br>This is a one-liner note (broken).
+> [!NOTE]
+> This is a one-liner note (broken).
 
 > This is a quote.
 >
@@ -196,7 +218,8 @@ Broken since 14 Nov 2023
 
 > This is a quote.
 >
-> > [!NOTE]<br>This is a one-liner note.
+> > [!NOTE]
+> > This is a one-liner note.
 
 > This is a quote.
 >
@@ -205,7 +228,8 @@ Broken since 14 Nov 2023
 
 > This is a quote.
 >
-> > [!NOTE]<br>This is a one-liner note.
+> > [!NOTE]
+> > This is a one-liner note.
 
 > This is a quote.
 >
@@ -214,7 +238,8 @@ Broken since 14 Nov 2023
 
 > This is a quote.
 >
-> > [!NOTE]<br>This is a one-liner note.
+> > [!NOTE]
+> > This is a one-liner note.
 
 > This is a quote.
 >
@@ -227,7 +252,8 @@ Broken since 14 Nov 2023
 >
 > >
 >
-> [!NOTE]<br>This is a one-liner note (broken).
+> [!NOTE]
+> This is a one-liner note (broken).
 
 ### quotes in alerts
 
@@ -302,10 +328,14 @@ Broken since 14 Nov 2023
 > [!NOTE]
 > ______________________________________________________________________
 
-> [!NOTE]<br>This is a note using `<br>` (broken).
+> [!NOTE]
+> This is a note using `<br>` (broken).
+>
 > ______________________________________________________________________
 
-> [!NOTE]<br>This is a note using `<br>`.
+> [!NOTE]
+> This is a note using `<br>`.
+>
 > ______________________________________________________________________
 
 > [!NOTE]
@@ -338,10 +368,14 @@ Broken since 14 Nov 2023
 > [!NOTE]
 > ______________________________________________________________________
 
-> [!NOTE]<br>This is a note using `<br>` (not broken).
+> [!NOTE]
+> This is a note using `<br>` (not broken).
+>
 > ______________________________________________________________________
 
-> [!NOTE]<br>This is a note using `<br>`.
+> [!NOTE]
+> This is a note using `<br>`.
+>
 > ______________________________________________________________________
 
 > [!NOTE]
@@ -374,15 +408,21 @@ Broken since 14 Nov 2023
 > [!NOTE]
 > ______________________________________________________________________
 
-> [!NOTE]<br>This is a note using `<br>` (not broken).
+> [!NOTE]
+> This is a note using `<br>` (not broken).
+>
 > ______________________________________________________________________
 
-> [!NOTE]<br>This is a note using `<br>`.
+> [!NOTE]
+> This is a note using `<br>`.
+>
 > ______________________________________________________________________
 
-> [!NOTE]<br>This is a one-liner note using `<br>`.<hr />after the break
+> [!NOTE]
+> This is a one-liner note using `<br>`.<hr />after the break
 
-> [!NOTE]<br><hr />
+> [!NOTE]
+> <hr />
 
 ## code block
 
@@ -496,17 +536,23 @@ fn main () {
 > [!NOTE]
 > Here is $$\\LaTeX$$.
 
-> [!NOTE]<br>This is a one-liner note.<br>$\LaTeX$
+> [!NOTE]
+> This is a one-liner note.<br>$\\LaTeX$
 
-> [!NOTE]<br>$\LaTeX$
+> [!NOTE]
+> $\\LaTeX$
 
-> [!NOTE]<br>Here is $\LaTeX$.
+> [!NOTE]
+> Here is $\\LaTeX$.
 
-> [!NOTE]<br>This is a one-liner note.<br>$$\LaTeX$$
+> [!NOTE]
+> This is a one-liner note.<br>$$\\LaTeX$$
 
-> [!NOTE]<br>$$\LaTeX$$
+> [!NOTE]
+> $$\\LaTeX$$
 
-> [!NOTE]<br>Here is $$\LaTeX$$.
+> [!NOTE]
+> Here is $$\\LaTeX$$.
 
 > [!NOTE]
 > This is a note.
@@ -561,12 +607,14 @@ fn main () {
 
 - This is a bullet list with `-`.
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 - > [!NOTE]
   > This is a note.
 
-- > [!NOTE]<br>This is a one-liner note.
+- > [!NOTE]
+  > This is a one-liner note.
 
 * This is a bullet list with `+`.
 
@@ -575,12 +623,14 @@ fn main () {
 
 * This is a bullet list with `+`.
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 * > [!NOTE]
   > This is a note.
 
-* > [!NOTE]<br>This is a one-liner note.
+* > [!NOTE]
+  > This is a one-liner note.
 
 - This is a bullet list with `*`.
 
@@ -589,12 +639,14 @@ fn main () {
 
 - This is a bullet list with `*`.
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 - > [!NOTE]
   > This is a note.
 
-- > [!NOTE]<br>This is a one-liner note.
+- > [!NOTE]
+  > This is a one-liner note.
 
 * This is a bullet list with `-`.
   > [!NOTE]
@@ -614,7 +666,8 @@ fn main () {
 
 1. This is an ordered list.
 
-   > [!NOTE]<br>This is a one-liner note.
+   > [!NOTE]
+   > This is a one-liner note.
 
 1. > [!NOTE]
    > This is a note.
@@ -626,7 +679,8 @@ fn main () {
    > This is a note.
    > <br>
 
-1. > [!NOTE]<br>This is a one-liner note.
+1. > [!NOTE]
+   > This is a one-liner note.
 
 1. This is an ordered list.
 
@@ -653,11 +707,13 @@ fn main () {
 
 - \[ \] This is a task list (`-`).
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 - \[x\] This is a task list with a checked task (`-`).
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 * \[ \] This is a task list (`+`).
 
@@ -671,11 +727,13 @@ fn main () {
 
 * \[ \] This is a task list (`+`).
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 * \[x\] This is a task list with a checked task (`+`).
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 - \[ \] This is a task list (`*`).
 
@@ -689,11 +747,13 @@ fn main () {
 
 - \[ \] This is a task list (`*`).
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 - \[x\] This is a task list with a checked task (`*`).
 
-  > [!NOTE]<br>This is a one-liner note.
+  > [!NOTE]
+  > This is a one-liner note.
 
 1. \[ \] This is a task list. The number `1. ` won't be shown.
 
@@ -709,11 +769,13 @@ fn main () {
 
 1. \[ \] This is a task list. The number `1. ` won't be shown.
 
-   > [!NOTE]<br>This is a one-liner note.
+   > [!NOTE]
+   > This is a one-liner note.
 
 1. \[x\] This is a task list with a checked task. The number `1. ` won't be shown.
 
-   > [!NOTE]<br>This is a one-liner note.
+   > [!NOTE]
+   > This is a one-liner note.
 
 - \[ \] This is a task list.
   > [!NOTE]
@@ -1000,11 +1062,14 @@ fn main () {
 > [!NOTE]
 > <table><tr><td>This is inside <code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>.</td></tr></table>
 
-> [!NOTE]<br>This is a one-liner note.<br><table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
+> [!NOTE]
+> This is a one-liner note.<br><table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
 
-> [!NOTE]<br>This is a one-liner note.<table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
+> [!NOTE]
+> This is a one-liner note.<table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
 
-> [!NOTE]<br><table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
+> [!NOTE]
+> <table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
 
 > [!NOTE]
 > This is a note.
@@ -1025,11 +1090,14 @@ fn main () {
 > [!NOTE]
 > <table><tr>This is inside <code>&lt;table&gt;&lt;tr&gt;</code>.</tr></table>
 
-> [!NOTE]<br>This is a one-liner note.<br><table><tr>This is inside `<table><tr>`.</tr></table>
+> [!NOTE]
+> This is a one-liner note.<br><table><tr>This is inside `<table><tr>`.</tr></table>
 
-> [!NOTE]<br>This is a one-liner note.<table><tr>This is inside `<table><tr>`.</tr></table>
+> [!NOTE]
+> This is a one-liner note.<table><tr>This is inside `<table><tr>`.</tr></table>
 
-> [!NOTE]<br><table><tr>This is inside `<table><tr>`.</tr></table>
+> [!NOTE]
+> <table><tr>This is inside `<table><tr>`.</tr></table>
 
 > [!NOTE]
 > This is a note.
@@ -1046,11 +1114,14 @@ fn main () {
 > [!NOTE]
 > <table>This is inside <code>&lt;table&gt;</code>.</table>
 
-> [!NOTE]<br>This is a one-liner note.<br><table>This is inside `<table>`.</table>
+> [!NOTE]
+> This is a one-liner note.<br><table>This is inside `<table>`.</table>
 
-> [!NOTE]<br>This is a one-liner note.<table>This is inside `<table>`.</table>
+> [!NOTE]
+> This is a one-liner note.<table>This is inside `<table>`.</table>
 
-> [!NOTE]<br><table>This is inside `<table>`.</table>
+> [!NOTE]
+> <table>This is inside `<table>`.</table>
 
 > [!NOTE]
 > <table>
@@ -1072,7 +1143,8 @@ fn main () {
 > </tbody>
 > </table>
 
-> [!NOTE]<br><table><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody></table>
+> [!NOTE]
+> <table><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody></table>
 
 > [!NOTE]
 > <table>
@@ -1090,7 +1162,8 @@ fn main () {
 > </tr>
 > </table>
 
-> [!NOTE]<br><table><tr><th>Header 1</th><th>Header 2</th></tr><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>
+> [!NOTE]
+> <table><tr><th>Header 1</th><th>Header 2</th></tr><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>
 
 > [!NOTE]
 > <table>
@@ -1115,7 +1188,8 @@ fn main () {
 > </tbody>
 > </table>
 
-> [!NOTE]<br><table><thead><tr><th align="left">Left</th><th align="center">Center</th><th align="right">Right</th></tr></thead><tbody><tr><td align="left">abcdefg</td><td align="center">abcdefg</td><td align="right">abcdefg</td></tr><tr><td align="left">1234</td><td align="center">1234</td><td align="right">1234</td></tr></tbody></table>
+> [!NOTE]
+> <table><thead><tr><th align="left">Left</th><th align="center">Center</th><th align="right">Right</th></tr></thead><tbody><tr><td align="left">abcdefg</td><td align="center">abcdefg</td><td align="right">abcdefg</td></tr><tr><td align="left">1234</td><td align="center">1234</td><td align="right">1234</td></tr></tbody></table>
 
 > [!NOTE]
 > <table>
@@ -1140,7 +1214,8 @@ fn main () {
 > </tbody>
 > </table>
 
-> [!NOTE]<br><table><thead><tr><th align="left">Left</th><th align="center">Center</th><th align="right">Right</th></tr></thead><tbody><tr><td>abcdefg</td><td>abcdefg</td><td>abcdefg</td></tr><tr><td>1234</td><td>1234</td><td>1234</td></tr></tbody></table>
+> [!NOTE]
+> <table><thead><tr><th align="left">Left</th><th align="center">Center</th><th align="right">Right</th></tr></thead><tbody><tr><td>abcdefg</td><td>abcdefg</td><td>abcdefg</td></tr><tr><td>1234</td><td>1234</td><td>1234</td></tr></tbody></table>
 
 > [!NOTE]
 > <table>
@@ -1165,7 +1240,8 @@ fn main () {
 > </tbody>
 > </table>
 
-> [!NOTE]<br><table><thead><tr><th>Header 1</th><th>Header 2</th><th>Header 3</th></tr></thead><tbody><tr><td align="left">abc</td><td align="center">abc</td><td align="right">abc</td></tr><tr><td align="right">1234</td><td align="center">1234</td><td align="left">1234</td></tr></tbody></table>
+> [!NOTE]
+> <table><thead><tr><th>Header 1</th><th>Header 2</th><th>Header 3</th></tr></thead><tbody><tr><td align="left">abc</td><td align="center">abc</td><td align="right">abc</td></tr><tr><td align="right">1234</td><td align="center">1234</td><td align="left">1234</td></tr></tbody></table>
 
 ### alerts in `<table>`
 
@@ -1201,7 +1277,8 @@ fn main () {
 <tr>
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -1234,7 +1311,8 @@ fn main () {
 <table>
 <tr>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </tr>
 </table>
@@ -1259,7 +1337,8 @@ fn main () {
 
 <table>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </table>
 
@@ -1288,7 +1367,8 @@ fn main () {
 <tr>
 <td>
 
-> [!NOTE]<br>This is a note.<br><table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
+> [!NOTE]
+> This is a note.<br><table><tr><td>This is inside `<table><tr><td>`.</td></tr></table>
 
 </td>
 </tr>
@@ -1349,31 +1429,36 @@ fn main () {
 
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
 <td>
 
-> [!TIP]<br>This is a one-liner tip.
+> [!TIP]
+> This is a one-liner tip.
 
 </td>
 
 <td>
 
-> [!IMPORTANT]<br>This is important (one-liner).
+> [!IMPORTANT]
+> This is important (one-liner).
 
 </td>
 
 <td>
 
-> [!CAUTION]<br>This is a one-liner caution.
+> [!CAUTION]
+> This is a one-liner caution.
 
 </td>
 
 <td>
 
-> [!WARNING]<br>This is a one-liner warning.
+> [!WARNING]
+> This is a one-liner warning.
 
 </td>
 
@@ -1390,7 +1475,8 @@ fn main () {
 
 <th>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </th>
 
@@ -1421,7 +1507,8 @@ fn main () {
 > [!NOTE]
 > This is a note.
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
@@ -1430,7 +1517,8 @@ fn main () {
 > [!NOTE]
 > This is a note.
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
@@ -1439,7 +1527,8 @@ fn main () {
 > [!NOTE]
 > This is a note.
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
@@ -1452,7 +1541,8 @@ fn main () {
 > [!TIP]
 > This is a tip.
 
-> [!TIP]<br>This is a one-liner tip.
+> [!TIP]
+> This is a one-liner tip.
 
 </td>
 
@@ -1461,7 +1551,8 @@ fn main () {
 > [!TIP]
 > This is a tip.
 
-> [!TIP]<br>This is a one-liner tip.
+> [!TIP]
+> This is a one-liner tip.
 
 </td>
 
@@ -1470,7 +1561,8 @@ fn main () {
 > [!TIP]
 > This is a tip.
 
-> [!TIP]<br>This is a one-liner tip.
+> [!TIP]
+> This is a one-liner tip.
 
 </td>
 
@@ -1483,7 +1575,8 @@ fn main () {
 > [!IMPORTANT]
 > This is important.
 
-> [!IMPORTANT]<br>This is important (one-liner).
+> [!IMPORTANT]
+> This is important (one-liner).
 
 </td>
 
@@ -1492,7 +1585,8 @@ fn main () {
 > [!IMPORTANT]
 > This is important.
 
-> [!IMPORTANT]<br>This is important (one-liner).
+> [!IMPORTANT]
+> This is important (one-liner).
 
 </td>
 
@@ -1501,7 +1595,8 @@ fn main () {
 > [!IMPORTANT]
 > This is important.
 
-> [!IMPORTANT]<br>This is important (one-liner).
+> [!IMPORTANT]
+> This is important (one-liner).
 
 </td>
 
@@ -1514,7 +1609,8 @@ fn main () {
 > [!CAUTION]
 > This is a caution.
 
-> [!CAUTION]<br>This is a one-liner caution.
+> [!CAUTION]
+> This is a one-liner caution.
 
 </td>
 
@@ -1523,7 +1619,8 @@ fn main () {
 > [!CAUTION]
 > This is a caution.
 
-> [!CAUTION]<br>This is a one-liner caution.
+> [!CAUTION]
+> This is a one-liner caution.
 
 </td>
 
@@ -1532,7 +1629,8 @@ fn main () {
 > [!CAUTION]
 > This is a caution.
 
-> [!CAUTION]<br>This is a one-liner caution.
+> [!CAUTION]
+> This is a one-liner caution.
 
 </td>
 
@@ -1545,7 +1643,8 @@ fn main () {
 > [!WARNING]
 > This is a warning.
 
-> [!WARNING]<br>This is a one-liner warning.
+> [!WARNING]
+> This is a one-liner warning.
 
 </td>
 
@@ -1554,7 +1653,8 @@ fn main () {
 > [!WARNING]
 > This is a warning.
 
-> [!WARNING]<br>This is a one-liner warning.
+> [!WARNING]
+> This is a one-liner warning.
 
 </td>
 
@@ -1563,7 +1663,8 @@ fn main () {
 > [!WARNING]
 > This is a warning.
 
-> [!WARNING]<br>This is a one-liner warning.
+> [!WARNING]
+> This is a one-liner warning.
 
 </td>
 
@@ -1720,7 +1821,8 @@ $$
 
 $\\LaTeX$
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -1732,7 +1834,8 @@ $\\LaTeX$
 
 $$\\LaTeX$$
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -1746,7 +1849,8 @@ $$
 \\LaTeX
 $$
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -1760,7 +1864,8 @@ $$
 \LaTeX
 ```
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -1818,7 +1923,8 @@ $$
 <tr>
 <td>
 
-> [!NOTE]<br>$\LaTeX$
+> [!NOTE]
+> $\\LaTeX$
 
 </td>
 </tr>
@@ -1828,7 +1934,8 @@ $$
 <tr>
 <td>
 
-> [!NOTE]<br>$$\LaTeX$$
+> [!NOTE]
+> $$\\LaTeX$$
 
 </td>
 </tr>
@@ -1919,7 +2026,8 @@ $$
 
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
@@ -1937,7 +2045,8 @@ $\\LaTeX$
 
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
@@ -1955,7 +2064,8 @@ $$\\LaTeX$$
 
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
@@ -1975,7 +2085,8 @@ $$
 
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 
@@ -2083,7 +2194,8 @@ $$
 <tr>
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -2103,7 +2215,8 @@ $\\LaTeX$
 <tr>
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -2123,7 +2236,8 @@ $$\\LaTeX$$
 <tr>
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -2145,7 +2259,8 @@ $$
 <tr>
 <td>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </td>
 </tr>
@@ -2181,11 +2296,14 @@ $$
 > [!NOTE]
 > <div align="center">This is inside <code>&lt;div&gt;</code>.</div>
 
-> [!NOTE]<br>This is a one-liner note.<br><div align="center">This is inside `<div>`.</div>
+> [!NOTE]
+> This is a one-liner note.<br><div align="center">This is inside `<div>`.</div>
 
-> [!NOTE]<br>This is a one-liner note.<div align="center">This is inside `<div>`.</div>
+> [!NOTE]
+> This is a one-liner note.<div align="center">This is inside `<div>`.</div>
 
-> [!NOTE]<br><div align="center">This is inside `<div>`.</div>
+> [!NOTE]
+> <div align="center">This is inside `<div>`.</div>
 
 ### alerts in `<div>` (broken since 28 Nov 2023?)
 
@@ -2226,7 +2344,8 @@ $$
 
 <div align="center">
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </div>
 
@@ -2236,7 +2355,8 @@ $$
 
 <div align="center">
 
-> [!NOTE]<br>This is a one-liner note.<br><div align="right">This is inside `<div>`.</div>
+> [!NOTE]
+> This is a one-liner note.<br><div align="right">This is inside `<div>`.</div>
 
 </div>
 
@@ -2267,11 +2387,14 @@ body
 > [!NOTE]
 > <html>This is inside <code>&lt;html&gt;</code>.</html>
 
-> [!NOTE]<br>This is a one-liner note.<br><html>This is inside `<html>`.</html>
+> [!NOTE]
+> This is a one-liner note.<br><html>This is inside `<html>`.</html>
 
-> [!NOTE]<br>This is a one-liner note.<html>This is inside `<html>`.</html>
+> [!NOTE]
+> This is a one-liner note.<html>This is inside `<html>`.</html>
 
-> [!NOTE]<br><html>This is inside `<html>`.</html>
+> [!NOTE]
+> <html>This is inside `<html>`.</html>
 
 > [!NOTE]
 > <html>
@@ -2327,7 +2450,8 @@ body
 
 <html>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </html>
 
@@ -2339,7 +2463,8 @@ body
 
 <html>
 
-> [!NOTE]<br>This is a one-liner note.<br><html>This is inside `<html>`.</html>
+> [!NOTE]
+> This is a one-liner note.<br><html>This is inside `<html>`.</html>
 
 </html>
 
@@ -2361,7 +2486,8 @@ body
 
 <html>
 
-> [!NOTE]<br>This is a one-liner note.<br><head>This is inside `<head>`.</head><br><body>This is inside `<body>`.</body>
+> [!NOTE]
+> This is a one-liner note.<br><head>This is inside `<head>`.</head><br><body>This is inside `<body>`.</body>
 
 </html>
 
@@ -2385,11 +2511,14 @@ title
 > [!NOTE]
 > <head>This is inside <code>&lt;head&gt;</code>.</head>
 
-> [!NOTE]<br>This is a one-liner note.<br><head>This is inside `<head>`.</head>
+> [!NOTE]
+> This is a one-liner note.<br><head>This is inside `<head>`.</head>
 
-> [!NOTE]<br>This is a one-liner note.<head>This is inside `<head>`.</head>
+> [!NOTE]
+> This is a one-liner note.<head>This is inside `<head>`.</head>
 
-> [!NOTE]<br><head>This is inside `<head>`.</head>
+> [!NOTE]
+> <head>This is inside `<head>`.</head>
 
 > [!NOTE]
 > <head>
@@ -2442,7 +2571,8 @@ title
 
 <head>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </head>
 
@@ -2454,7 +2584,8 @@ title
 
 <head>
 
-> [!NOTE]<br>This is a one-liner note.<br><head>This is inside `<head>`.</head>
+> [!NOTE]
+> This is a one-liner note.<br><head>This is inside `<head>`.</head>
 
 </head>
 
@@ -2480,11 +2611,14 @@ paragraph test
 > [!NOTE]
 > <title>This is inside <code>&lt;title&gt;</code>.</title>
 
-> [!NOTE]<br>This is a one-liner note.<br><title>This is inside `<title>`.</title>
+> [!NOTE]
+> This is a one-liner note.<br><title>This is inside `<title>`.</title>
 
-> [!NOTE]<br>This is a one-liner note.<title>This is inside `<title>`.</title>
+> [!NOTE]
+> This is a one-liner note.<title>This is inside `<title>`.</title>
 
-> [!NOTE]<br><title>This is inside `<title>`.</title>
+> [!NOTE]
+> <title>This is inside `<title>`.</title>
 
 > [!NOTE]
 > <title>
@@ -2537,7 +2671,8 @@ paragraph test
 
 <title>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </title>
 
@@ -2549,7 +2684,8 @@ paragraph test
 
 <title>
 
-> [!NOTE]<br>This is a one-liner note.<br><title>This is inside `<title>`.</title>
+> [!NOTE]
+> This is a one-liner note.<br><title>This is inside `<title>`.</title>
 
 </title>
 
@@ -2568,11 +2704,14 @@ paragraph test
 > [!NOTE]
 > <meta charset="utf-8" />
 
-> [!NOTE]<br>This is a one-liner note.<br><meta charset="utf-8" />
+> [!NOTE]
+> This is a one-liner note.<br><meta charset="utf-8" />
 
-> [!NOTE]<br>This is a one-liner note.<meta charset="utf-8" />
+> [!NOTE]
+> This is a one-liner note.<meta charset="utf-8" />
 
-> [!NOTE]<br><meta charset="utf-8" />
+> [!NOTE]
+> <meta charset="utf-8" />
 
 > [!NOTE]
 > This is a note.
@@ -2581,11 +2720,14 @@ paragraph test
 > [!NOTE]
 > <meta>This is inside <code>\<meta></code>.</meta>
 
-> [!NOTE]<br>This is a one-liner note.<br><meta>This is inside `<meta>`.</meta>
+> [!NOTE]
+> This is a one-liner note.<br><meta>This is inside `<meta>`.</meta>
 
-> [!NOTE]<br>This is a one-liner note.<meta>This is inside `<meta>`.</meta>
+> [!NOTE]
+> This is a one-liner note.<meta>This is inside `<meta>`.</meta>
 
-> [!NOTE]<br><meta>This is inside `<meta>`.</meta>
+> [!NOTE]
+> <meta>This is inside `<meta>`.</meta>
 
 ## `<body>`
 
@@ -2607,11 +2749,14 @@ body paragraph
 > [!NOTE]
 > <body>This is inside <code>&lt;body&gt;</code>.</body>
 
-> [!NOTE]<br>This is a one-liner note.<br><body>This is inside `<body>`.</body>
+> [!NOTE]
+> This is a one-liner note.<br><body>This is inside `<body>`.</body>
 
-> [!NOTE]<br>This is a one-liner note.<body>This is inside `<body>`.</body>
+> [!NOTE]
+> This is a one-liner note.<body>This is inside `<body>`.</body>
 
-> [!NOTE]<br><body>This is inside `<body>`.</body>
+> [!NOTE]
+> <body>This is inside `<body>`.</body>
 
 > [!NOTE]
 > <body>
@@ -2664,7 +2809,8 @@ body paragraph
 
 <body>
 
-> [!NOTE]<br>This is a one-liner note.
+> [!NOTE]
+> This is a one-liner note.
 
 </body>
 
@@ -2676,7 +2822,8 @@ body paragraph
 
 <body>
 
-> [!NOTE]<br>This is a one-liner note.<br><body>This is inside `<body>`.</body>
+> [!NOTE]
+> This is a one-liner note.<br><body>This is inside `<body>`.</body>
 
 </body>
 
@@ -2695,6 +2842,7 @@ body paragraph
 
 <body>
 
-> [!NOTE]<br>This is a one-liner note.<br><p>This is inside `<p>`.</p>
+> [!NOTE]
+> This is a one-liner note.<br><p>This is inside `<p>`.</p>
 
 </body>
