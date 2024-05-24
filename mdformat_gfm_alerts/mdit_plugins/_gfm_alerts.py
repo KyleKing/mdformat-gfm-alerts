@@ -18,8 +18,8 @@ INLINE_SEP = "\n\n"
 """Separator to differentiate the title and inline content (if present)."""
 
 PATTERNS = {
-    # Note '> ' prefix is removed when parsing
-    r"^\*\*(?P<title>Note|Warning)\*\*",
+    # Note '> ' prefix is removed when parsing and trailing ":" if found
+    r"^\*\*(?P<title>Note|Warning)\*\*:?",
     # FYI: This is intentionally strict. Keep in sync with supported titles
     r"^\\?\[!(?P<title>NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\?\]",
 }

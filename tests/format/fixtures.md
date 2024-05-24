@@ -53,6 +53,8 @@ Fixes formatting issues introduced without this extension
 - List A
   - List Nested
 
+> **Note**: This is a note
+
 >  \[!Note\] Useful information that users should know, even when skimming content.
 
 > \[!cAUtIOn\]
@@ -68,6 +70,9 @@ Fixes formatting issues introduced without this extension
 
 - List A
   - List Nested
+
+> [!NOTE]
+> This is a note
 
 > [!NOTE]
 > Useful information that users should know, even when skimming content.
