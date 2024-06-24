@@ -17,6 +17,7 @@ from typing import TYPE_CHECKING, Callable, NamedTuple
 
 from markdown_it import MarkdownIt
 from markdown_it.rules_block import StateBlock
+from markdown_it.rules_inline import StateInline
 from mdit_py_plugins.utils import is_code_block
 
 if TYPE_CHECKING:
@@ -24,9 +25,14 @@ if TYPE_CHECKING:
 
 
 # FYI: copied from mdformat_admon.factories
+# https://github.com/KyleKing/mdformat-admon/blob/43c54ed39124161abded0f2b632aa906450077cc/mdformat_admon/factories/_whitespace_admon_factories.py#L180-L187
 @contextmanager
-def new_token(state: StateBlock, name: str, kind: str) -> Generator[Token, None, None]:
-    """Creates scoped token."""
+def new_token(
+    state: StateBlock | StateInline,
+    name: str,
+    kind: str,
+) -> Generator[Token, None, None]:
+    """Create scoped token."""
     yield state.push(f"{name}_open", kind, 1)
     state.push(f"{name}_close", kind, -1)
 
@@ -35,8 +41,8 @@ def new_token(state: StateBlock, name: str, kind: str) -> Generator[Token, None,
 class AlertState(NamedTuple):
     """Frozen state."""
 
-    parentType: str
-    lineMax: int
+    parentType: str  # noqa: N815
+    lineMax: int  # noqa: N815
 
 
 class AlertData(NamedTuple):

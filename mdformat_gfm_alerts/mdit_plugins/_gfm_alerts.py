@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from markdown_it.rules_block import StateBlock
 
-from ..factories import (
+from mdformat_gfm_alerts.factories import (
     AlertData,
     gfm_alerts_plugin_factory,
     new_token,
@@ -71,15 +71,15 @@ def format_gfm_alerts_markup(
 
 def alert_logic(
     state: StateBlock,
-    startLine: int,
-    endLine: int,
+    start_line: int,
+    end_line: int,
     silent: bool,
 ) -> bool:
     """Parse GitHub Alerts."""
     parser_func = parse_possible_blockquote_admon_factory(GFM_ALERTS_PREFIX, PATTERNS)
-    result = parser_func(state, startLine, endLine, silent)
+    result = parser_func(state, start_line, end_line, silent)
     if isinstance(result, AlertData):
-        format_gfm_alerts_markup(state, startLine, admonition=result)
+        format_gfm_alerts_markup(state, start_line, admonition=result)
         return True
     return result
 

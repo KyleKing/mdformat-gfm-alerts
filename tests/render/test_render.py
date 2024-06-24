@@ -5,8 +5,7 @@ from markdown_it import MarkdownIt
 from markdown_it.utils import read_fixture_file
 
 from mdformat_gfm_alerts.mdit_plugins import gfm_alerts_plugin
-
-from ..helpers import print_text
+from tests.helpers import print_text
 
 FIXTURE_PATH = Path(__file__).parent / "fixtures"
 
