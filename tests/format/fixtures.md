@@ -86,3 +86,10 @@ Fixes formatting issues introduced without this extension
 >
 > - A quoted list
 .
+
+Don't crash on incomplete alert (https://github.com/KyleKing/mdformat-obsidian/issues/5)
+.
+> **NOTE**
+.
+> [!NOTE]
+.
