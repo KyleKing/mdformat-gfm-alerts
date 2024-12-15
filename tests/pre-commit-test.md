@@ -148,15 +148,15 @@ Broken since 14 Nov 2023
 ### alerts in quotes (broken since 14 Nov 2023)
 
 > This breaks the syntax.
-> \[!NOTE\]
+> [!NOTE]
 > This is a note.
 
 > This breaks the syntax.\
-> \[!NOTE\]
+> [!NOTE]
 > This is a note.
 
 > This breaks the syntax.<br>
-> \[!NOTE\]
+> [!NOTE]
 > This is a note.
 
 > This breaks the syntax.
@@ -165,7 +165,7 @@ Broken since 14 Nov 2023
 > This is a note.
 
 > This breaks the syntax.
-> \[!NOTE\]<br>This is a one-liner note.
+> [!NOTE]<br>This is a one-liner note.
 
 > This is a quote.
 >
@@ -695,92 +695,92 @@ fn main () {
          > This is a note.
          > <br>
 
-- \[ \] This is a task list (`-`).
+- [ ] This is a task list (`-`).
 
   > [!NOTE]
   > This is a note.
 
-- \[x\] This is a task list with a checked task (`-`).
+- [x] This is a task list with a checked task (`-`).
 
   > [!NOTE]
   > This is a note.
 
-- \[ \] This is a task list (`-`).
+- [ ] This is a task list (`-`).
 
   > [!NOTE]
   > This is a one-liner note.
 
-- \[x\] This is a task list with a checked task (`-`).
+- [x] This is a task list with a checked task (`-`).
 
   > [!NOTE]
   > This is a one-liner note.
 
-* \[ \] This is a task list (`+`).
+* [ ] This is a task list (`+`).
 
   > [!NOTE]
   > This is a note.
 
-* \[x\] This is a task list with a checked task (`+`).
+* [x] This is a task list with a checked task (`+`).
 
   > [!NOTE]
   > This is a note.
 
-* \[ \] This is a task list (`+`).
+* [ ] This is a task list (`+`).
 
   > [!NOTE]
   > This is a one-liner note.
 
-* \[x\] This is a task list with a checked task (`+`).
+* [x] This is a task list with a checked task (`+`).
 
   > [!NOTE]
   > This is a one-liner note.
 
-- \[ \] This is a task list (`*`).
+- [ ] This is a task list (`*`).
 
   > [!NOTE]
   > This is a note.
 
-- \[x\] This is a task list with a checked task (`*`).
+- [x] This is a task list with a checked task (`*`).
 
   > [!NOTE]
   > This is a note.
 
-- \[ \] This is a task list (`*`).
+- [ ] This is a task list (`*`).
 
   > [!NOTE]
   > This is a one-liner note.
 
-- \[x\] This is a task list with a checked task (`*`).
+- [x] This is a task list with a checked task (`*`).
 
   > [!NOTE]
   > This is a one-liner note.
 
-1. \[ \] This is a task list. The number `1. ` won't be shown.
+1. [ ] This is a task list. The number `1. ` won't be shown.
 
    > [!NOTE]
    > This is a note.
    > <br>
 
-1. \[x\] This is a task list with a checked task. The number `1. ` won't be shown.
+1. [x] This is a task list with a checked task. The number `1. ` won't be shown.
 
    > [!NOTE]
    > This is a note.
    > <br>
 
-1. \[ \] This is a task list. The number `1. ` won't be shown.
+1. [ ] This is a task list. The number `1. ` won't be shown.
 
    > [!NOTE]
    > This is a one-liner note.
 
-1. \[x\] This is a task list with a checked task. The number `1. ` won't be shown.
+1. [x] This is a task list with a checked task. The number `1. ` won't be shown.
 
    > [!NOTE]
    > This is a one-liner note.
 
-- \[ \] This is a task list.
+- [ ] This is a task list.
   > [!NOTE]
   > This is a note.
-  - \[x\] This is a task list.
+  - [x] This is a task list.
     > [!NOTE]
     > This is a note.
 
@@ -948,41 +948,41 @@ fn main () {
 > [!NOTE]
 > This is a note.
 >
-> - \[ \] This is a task list (`-`).
-> - \[x\] This is a task list with a checked task (`-`).
+> - [ ] This is a task list (`-`).
+> - [x] This is a task list with a checked task (`-`).
 >
-> * \[ \] This is a task list (`+`).
-> * \[x\] This is a task list with a checked task (`+`).
+> * [ ] This is a task list (`+`).
+> * [x] This is a task list with a checked task (`+`).
 >
-> - \[ \] This is a task list (`*`).
-> - \[x\] This is a task list with a checked task (`*`).
+> - [ ] This is a task list (`*`).
+> - [x] This is a task list with a checked task (`*`).
 >
-> 1. \[ \] This is a task list.
-> 1. \[x\] This is a task list with a checked task.
+> 1. [ ] This is a task list.
+> 1. [x] This is a task list with a checked task.
 
 > [!NOTE]
-> - \[ \] This is a task list directly in an alert.
+> - [ ] This is a task list directly in an alert.
 
-- \[ \] This is a task list.
+- [ ] This is a task list.
 
   > [!NOTE]
   > This is a note.
   >
-  > - \[ \] This is a task list.
+  > - [ ] This is a task list.
 
-- \[ \] This is a task list.
-
-  > [!NOTE]
-  > - \[ \] This is a task list directly in an alert.
-
-- \[ \] This is a task list.
+- [ ] This is a task list.
 
   > [!NOTE]
-  > - \[ \] This is a task list directly in an alert.
+  > - [ ] This is a task list directly in an alert.
 
-  - \[x\] This is a task list.
+- [ ] This is a task list.
+
+  > [!NOTE]
+  > - [ ] This is a task list directly in an alert.
+
+  - [x] This is a task list.
     > [!NOTE]
-    > - \[x\] This is a task list directly in an alert.
+    > - [x] This is a task list directly in an alert.
 
 ## table (GitHub Flavored Markdown)
 
@@ -991,49 +991,49 @@ fn main () {
 > [!NOTE]
 > | Header 1 | Header 2 |
 > | -------- | -------- |
-> | a        | b        |
-> | c        | d        |
+> | a | b |
+> | c | d |
 
 > [!NOTE]
 > | Left-aligned | Center-aligned | Right-aligned |
 > | :----------- | :------------: | ------------: |
-> | abc          |      abc       |           abc |
-> | 1234         |      1234      |          1234 |
+> | abc | abc | abc |
+> | 1234 | 1234 | 1234 |
 
 ### alerts in tables (not supported)
 
-| NOTE                                          | IMPORTANT                                             | WARNING                                             |
+| NOTE | IMPORTANT | WARNING |
 | --------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------- |
-| > \[!NOTE\]<br>This is a note.                | > \[!IMPORTANT\]<br>This is important.                | > \[!WARNING\]<br>This is a warning.                |
-| > \[!NOTE\]<br>This is a note.<br>second line | > \[!IMPORTANT\]<br>This is important.<br>second line | > \[!WARNING\]<br>This is a warning.<br>second line |
+| > [!NOTE]<br>This is a note. | > [!IMPORTANT]<br>This is important. | > [!WARNING]<br>This is a warning. |
+| > [!NOTE]<br>This is a note.<br>second line | > [!IMPORTANT]<br>This is important.<br>second line | > [!WARNING]<br>This is a warning.<br>second line |
 
-| Header  | > \[!NOTE\]<br>This is a note. |
+| Header | > [!NOTE]<br>This is a note. |
 | ------- | ------------------------------ |
-| Content | NOTE                           |
+| Content | NOTE |
 
-| Left-aligned                           |             Center-aligned             |                          Right-aligned |
+| Left-aligned | Center-aligned | Right-aligned |
 | :------------------------------------- | :------------------------------------: | -------------------------------------: |
-| > \[!NOTE\]<br>This is a note.         |     > \[!NOTE\]<br>This is a note.     |         > \[!NOTE\]<br>This is a note. |
-| > \[!IMPORTANT\]<br>This is important. | > \[!IMPORTANT\]<br>This is important. | > \[!IMPORTANT\]<br>This is important. |
-| > \[!WARNING\]<br>This is a warning.   |  > \[!WARNING\]<br>This is a warning.  |   > \[!WARNING\]<br>This is a warning. |
+| > [!NOTE]<br>This is a note. | > [!NOTE]<br>This is a note. | > [!NOTE]<br>This is a note. |
+| > [!IMPORTANT]<br>This is important. | > [!IMPORTANT]<br>This is important. | > [!IMPORTANT]<br>This is important. |
+| > [!WARNING]<br>This is a warning. | > [!WARNING]<br>This is a warning. | > [!WARNING]<br>This is a warning. |
 
 > [!NOTE]
-> | NOTE                                          | IMPORTANT                                             | WARNING                                             |
+> | NOTE | IMPORTANT | WARNING |
 > | --------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------- |
-> | > \[!NOTE\]<br>This is a note.                | > \[!IMPORTANT\]<br>This is important.                | > \[!WARNING\]<br>This is a warning.                |
-> | > \[!NOTE\]<br>This is a note.<br>second line | > \[!IMPORTANT\]<br>This is important.<br>second line | > \[!WARNING\]<br>This is a warning.<br>second line |
+> | > [!NOTE]<br>This is a note. | > [!IMPORTANT]<br>This is important. | > [!WARNING]<br>This is a warning. |
+> | > [!NOTE]<br>This is a note.<br>second line | > [!IMPORTANT]<br>This is important.<br>second line | > [!WARNING]<br>This is a warning.<br>second line |
 
 > [!IMPORTANT]
-> | Header  | > \[!NOTE\]<br>This is a note. |
+> | Header | > [!NOTE]<br>This is a note. |
 > | ------- | ------------------------------ |
-> | Content | NOTE                           |
+> | Content | NOTE |
 
 > [!WARNING]
-> | Left-aligned                           |             Center-aligned             |                          Right-aligned |
+> | Left-aligned | Center-aligned | Right-aligned |
 > | :------------------------------------- | :------------------------------------: | -------------------------------------: |
-> | > \[!NOTE\]<br>This is a note.         |     > \[!NOTE\]<br>This is a note.     |         > \[!NOTE\]<br>This is a note. |
-> | > \[!IMPORTANT\]<br>This is important. | > \[!IMPORTANT\]<br>This is important. | > \[!IMPORTANT\]<br>This is important. |
-> | > \[!WARNING\]<br>This is a warning.   |  > \[!WARNING\]<br>This is a warning.  |   > \[!WARNING\]<br>This is a warning. |
+> | > [!NOTE]<br>This is a note. | > [!NOTE]<br>This is a note. | > [!NOTE]<br>This is a note. |
+> | > [!IMPORTANT]<br>This is important. | > [!IMPORTANT]<br>This is important. | > [!IMPORTANT]<br>This is important. |
+> | > [!WARNING]<br>This is a warning. | > [!WARNING]<br>This is a warning. | > [!WARNING]<br>This is a warning. |
 
 ## `<table>`
 

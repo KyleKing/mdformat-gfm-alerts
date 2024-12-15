@@ -41,8 +41,8 @@ def new_token(
 class AlertState(NamedTuple):
     """Frozen state."""
 
-    parentType: str  # noqa: N815
-    lineMax: int  # noqa: N815
+    parentType: str
+    lineMax: int
 
 
 class AlertData(NamedTuple):
