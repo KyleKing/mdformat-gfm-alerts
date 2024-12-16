@@ -13,5 +13,5 @@ plugin_name: gfm_alerts
 repository_namespace: kyleking
 repository_provider: https://github.com
 repository_url: https://github.com/kyleking/mdformat-gfm-alerts
-sync_admon_factories: true
+sync_admon_factories: false
 
