@@ -13,7 +13,7 @@ Add this package wherever you use `mdformat` and the plugin will be auto-recogni
 ```yaml
 repos:
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.18
+    rev: 0.7.19
     hooks:
       - id: mdformat
         additional_dependencies:
