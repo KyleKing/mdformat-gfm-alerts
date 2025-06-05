@@ -45,10 +45,14 @@ from mdformat_gfm_alerts.mdit_plugins import gfm_alerts_plugin
 md = MarkdownIt()
 md.use(gfm_alerts_plugin)
 
-text = "... markdown example ..."
+text = """
+> [!WARNING]
+> This is the warning text
+"""
 md.render(text)
-# <div>
-#
+# <div class="markdown-alert markdown-alert-warning">
+# <p class="markdown-alert-title">Warning</p>
+# <p>This is the warning text</p>
 # </div>
 ```
 

@@ -46,7 +46,7 @@ class AlertRuleFactory:
     @cached_property
     def patterns(
         self,
-    ) -> list[re.Pattern]:
+    ) -> list[re.Pattern[str]]:
         marker_name_re = "\\w+" if self.titles == ["*"] else "|".join(self.titles)
         flags = 0 if self.match_case_sensitive else re.IGNORECASE
         return [
