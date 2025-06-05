@@ -2,7 +2,7 @@
 
 [![Build Status][ci-badge]][ci-link] [![PyPI version][pypi-badge]][pypi-link]
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for [GFM Alerts](https://github.com/orgs/community/discussions/16925)
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for [GFM Alerts](https://github.com/orgs/community/discussions/16925). For the JS markdown-it equivalent, see [antfu/markdown-it-github-alerts](https://github.com/antfu/markdown-it-github-alerts)
 
 ## `mdformat` Usage
 
