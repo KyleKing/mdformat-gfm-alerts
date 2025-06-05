@@ -16,27 +16,30 @@ def update_mdit(mdit: MarkdownIt) -> None:
     mdit.use(gfm_alerts_plugin)
 
 
-def _render_gfm_alerts(node: RenderTreeNode, context: RenderContext) -> str:
-    """Render a `RenderTreeNode`."""
-    title_line = node.markup
-    elements = [render for child in node.children if (render := child.render(context))]
-    # Do not separate the title line from the first row
-    return "\n".join([title_line, "\n\n".join(elements)]).rstrip()
+def _render_alert(node: RenderTreeNode, context: RenderContext) -> str:
+    if node.nester_tokens is not None:
+        open_token = node.nester_tokens.opening
+        close_token = node.nester_tokens.closing
 
+        result = f"> [!{open_token.meta['title'].upper()}]"
 
-def _no_render(
-    node: RenderTreeNode,  # noqa: ARG001
-    context: RenderContext,  # noqa: ARG001
-) -> str:
-    """Skip rendering when handled separately."""
-    return ""
+        open_token.type = "blockquote_open"
+        open_token.tag = "blockquote"
+        open_token.meta = {}
+
+        close_token.type = "blockquote_close"
+        close_token.tag = "blockquote"
+
+        # checking if inner node has non empty renderable
+        for inner_node in node.walk(include_self=False):
+            if not inner_node.is_nested and inner_node.render(context=context).strip():
+                result += "\n" + node.render(context=context).lstrip()
+                break
+        return result
+    raise ValueError("Alert node should have nester tokens.")
 
 
 # A mapping from syntax tree node type to a function that renders it.
 # This can be used to overwrite renderer functions of existing syntax
 # or add support for new syntax.
-RENDERERS: Mapping[str, Render] = {
-    GFM_ALERTS_PREFIX: _render_gfm_alerts,
-    f"{GFM_ALERTS_PREFIX}_title": _no_render,
-    f"{GFM_ALERTS_PREFIX}_inline": _no_render,
-}
+RENDERERS: Mapping[str, Render] = {GFM_ALERTS_PREFIX: _render_alert}

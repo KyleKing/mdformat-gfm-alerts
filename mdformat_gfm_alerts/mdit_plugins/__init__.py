@@ -1,3 +1,3 @@
-from ._gfm_alerts import GFM_ALERTS_PREFIX, format_gfm_alerts_markup, gfm_alerts_plugin
+from ._gfm_alerts import GFM_ALERTS_PREFIX, gfm_alerts_plugin
 
-__all__ = ("GFM_ALERTS_PREFIX", "format_gfm_alerts_markup", "gfm_alerts_plugin")
+__all__ = ("GFM_ALERTS_PREFIX", "gfm_alerts_plugin")
