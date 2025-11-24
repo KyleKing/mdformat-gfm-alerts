@@ -8,7 +8,7 @@ An [mdformat](https://github.com/executablebooks/mdformat) plugin for [GFM Alert
 
 Add this package wherever you use `mdformat` and the plugin will be auto-recognized. No additional configuration necessary. See [additional information on `mdformat` plugins here](https://mdformat.readthedocs.io/en/stable/users/plugins.html)
 
-### Pre-Commit
+### pre-commit / prek
 
 ```yaml
 repos:
@@ -20,17 +20,17 @@ repos:
           - mdformat-gfm-alerts
 ```
 
-### pipx/uv
+### uvx
+
+```sh
+uvx --with mdformat-gfm-alerts mdformat
+```
+
+Or with pipx:
 
 ```sh
 pipx install mdformat
 pipx inject mdformat mdformat-gfm-alerts
-```
-
-Or with uv:
-
-```sh
-uv tool run --from mdformat-gfm-alerts mdformat
 ```
 
 ## HTML Rendering
@@ -60,7 +60,7 @@ md.render(text)
 
 See [CONTRIBUTING.md](https://github.com/kyleking/mdformat-gfm-alerts/blob/main/CONTRIBUTING.md)
 
-[ci-badge]: https://github.com/kyleking/mdformat-gfm-alerts/workflows/CI/badge.svg?branch=main
+[ci-badge]: https://github.com/kyleking/mdformat-gfm-alerts/actions/workflows/tests.yml/badge.svg?branch=main
 [ci-link]: https://github.com/kyleking/mdformat-gfm-alerts/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-gfm-alerts.svg
 [pypi-link]: https://pypi.org/project/mdformat-gfm-alerts
