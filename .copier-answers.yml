@@ -14,5 +14,5 @@ repository_namespace: kyleking
 repository_provider: https://github.com
 repository_url: https://github.com/kyleking/mdformat-gfm-alerts
 sync_admon_factories: false
-sync_blockquote_factories: true
+sync_blockquote_factories: false
 
