@@ -42,4 +42,6 @@ def _render_alert(node: RenderTreeNode, context: RenderContext) -> str:
 # A mapping from syntax tree node type to a function that renders it.
 # This can be used to overwrite renderer functions of existing syntax
 # or add support for new syntax.
-RENDERERS: Mapping[str, Render] = {GFM_ALERTS_PREFIX: _render_alert}
+RENDERERS: Mapping[str, Render] = {
+    GFM_ALERTS_PREFIX: _render_alert,
+}
