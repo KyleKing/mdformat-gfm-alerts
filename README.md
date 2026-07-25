@@ -13,7 +13,7 @@ Add this package wherever you use `mdformat` and the plugin will be auto-recogni
 ```yaml
 repos:
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.19
+    rev: 1.0.0
     hooks:
       - id: mdformat
         additional_dependencies:
@@ -23,7 +23,7 @@ repos:
 ### uvx
 
 ```sh
-uvx --with mdformat-gfm-alerts mdformat
+uvx --with=mdformat-gfm-alerts mdformat
 ```
 
 Or with pipx:

@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 from functools import cached_property
-from typing import Callable
 
 from markdown_it import MarkdownIt
 from markdown_it.renderer import RendererProtocol
@@ -145,11 +145,11 @@ def gfm_alerts_plugin(
     md.core.ruler.after("block", GFM_ALERTS_PREFIX, github_alerts_rule)
 
     def render_alert_open(
-        self: RendererProtocol,  # noqa: ARG001
+        self: RendererProtocol,  # ruff: ignore[unused-function-argument]
         tokens: list[Token],
         idx: int,
-        options,  # noqa: ANN001,ARG001
-        env,  # noqa: ANN001,ARG001
+        options,  # ruff: ignore[missing-type-function-argument, unused-function-argument]
+        env,  # ruff: ignore[missing-type-function-argument, unused-function-argument]
     ) -> str:
         meta = tokens[idx].meta
         return (
@@ -159,11 +159,11 @@ def gfm_alerts_plugin(
         )
 
     def render_alert_close(
-        self: RendererProtocol,  # noqa: ARG001
-        tokens: list[Token],  # noqa: ARG001
-        idx: int,  # noqa: ARG001
-        options,  # noqa: ANN001,ARG001
-        env,  # noqa: ANN001,ARG001
+        self: RendererProtocol,  # ruff: ignore[unused-function-argument]
+        tokens: list[Token],  # ruff: ignore[unused-function-argument]
+        idx: int,  # ruff: ignore[unused-function-argument]
+        options,  # ruff: ignore[missing-type-function-argument, unused-function-argument]
+        env,  # ruff: ignore[missing-type-function-argument, unused-function-argument]
     ) -> str:
         return "</div>"
 
