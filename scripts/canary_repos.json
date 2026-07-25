@@ -1,0 +1,31 @@
+{
+    "$comment": "Not overwritten by 'copier update' once this file exists (see canary.py's module docstring for how to add an entry, and copier.yml's '_skip_if_exists').",
+    "repos": [
+        {
+            "excludes": [
+                "changelog.d/**/*.md",
+                "src/inspect_evals/niah/README.md"
+            ],
+            "name": "inspect-evals",
+            "patterns": [
+                "*.md",
+                "src/inspect_evals/*/README.md"
+            ],
+            "url": "https://github.com/UKGovernmentBEIS/inspect_evals"
+        },
+        {
+            "excludes": [
+                "source/extended-json/extended-json.md"
+            ],
+            "name": "mongodb-specifications",
+            "options": {
+                "number": true,
+                "wrap": 120
+            },
+            "patterns": [
+                "**/*.md"
+            ],
+            "url": "https://github.com/mongodb/specifications"
+        }
+    ]
+}
