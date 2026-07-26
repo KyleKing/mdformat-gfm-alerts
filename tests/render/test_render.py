@@ -1,3 +1,4 @@
+from functools import partial
 from pathlib import Path
 
 import pytest
@@ -18,6 +19,10 @@ def with_plugin(filename, plugins):
     ("line", "title", "text", "expected", "plugins"),
     [
         *with_plugin("gfm_alerts.md", [gfm_alerts_plugin]),
+        *with_plugin(
+            "gfm_alerts_goldmark.md",
+            [partial(gfm_alerts_plugin, goldmark=True)],
+        ),
     ],
 )
 def test_render(line, title, text, expected, plugins):

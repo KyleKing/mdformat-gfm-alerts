@@ -94,7 +94,7 @@ Don't crash on incomplete alert (https://github.com/KyleKing/mdformat-obsidian/i
 > [!NOTE]
 .
 
-Preserves an inline custom title on the canonical `[!TYPE]` form (Hugo/Obsidian extension)
+Strict GFM (default) folds trailing text on the canonical `[!TYPE]` line into the body; it's not part of GitHub's alerts spec
 .
 > [!TIP] **When to use it:**
 >
@@ -109,30 +109,38 @@ Preserves an inline custom title on the canonical `[!TYPE]` form (Hugo/Obsidian 
 >
 > Body paragraph.
 .
-> [!TIP] **When to use it:**
+> [!TIP]
+> **When to use it:**
+>
 > - One bullet.
 > - Another bullet.
 
-> [!NOTE] Inline title with a colon:
+> [!NOTE]
+> Inline title with a colon:
+>
 > Body paragraph.
 
-> [!WARNING] Plain inline text
+> [!WARNING]
+> Plain inline text
+>
 > Body paragraph.
 .
 
-Inline title with no body is emitted on the marker line
+Strict GFM (default) folds a title-only marker line into an otherwise empty alert body
 .
 > [!TIP] **Standalone title:**
 .
-> [!TIP] **Standalone title:**
+> [!TIP]
+> **Standalone title:**
 .
 
-Inline title roundtrips through whitespace variations
+Strict GFM (default) folds a title-only marker line regardless of the whitespace before it
 .
 > [!TIP]   **Spaced title:**
 > Body.
 .
-> [!TIP] **Spaced title:**
+> [!TIP]
+> **Spaced title:**
 > Body.
 .
 

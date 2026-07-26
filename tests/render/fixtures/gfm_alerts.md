@@ -30,23 +30,25 @@ Test inline syntax
 </div>
 .
 
-Canonical unescaped `[!TYPE]` with inline custom title renders the title in place of the type name
+Strict GFM (default) folds trailing text on the canonical `[!TYPE]` line into the body instead of treating it as a title
 .
 > [!TIP] **When to use it:**
 >
 > Body paragraph.
 .
 <div class="markdown-alert markdown-alert-tip">
-<p class="markdown-alert-title"><strong>When to use it:</strong></p>
+<p class="markdown-alert-title">Tip</p>
+<p><strong>When to use it:</strong></p>
 <p>Body paragraph.</p>
 </div>
 .
 
-Canonical inline title without body
+Strict GFM (default) folds a title-only marker line into the alert body
 .
 > [!NOTE] Custom title:
 .
 <div class="markdown-alert markdown-alert-note">
-<p class="markdown-alert-title">Custom title:</p>
+<p class="markdown-alert-title">Note</p>
+<p>Custom title:</p>
 </div>
 .

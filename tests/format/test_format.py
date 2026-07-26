@@ -17,20 +17,23 @@ def flatten(nested_list: list[list[T]]) -> list[T]:
     return [*chain(*nested_list)]
 
 
-fixtures = flatten(
-    [
-        read_fixture_file(Path(__file__).parent / "fixtures" / fixture_path)
-        for fixture_path in ("gfm_alerts.md",)
-    ],
-)
+def with_options(filename, options):
+    fixtures = read_fixture_file(Path(__file__).parent / "fixtures" / filename)
+    return [(*fix, options) for fix in fixtures]
+
+
+fixtures = [
+    *with_options("gfm_alerts.md", {}),
+    *with_options("gfm_alerts_goldmark.md", {"goldmark": True}),
+]
 
 
 @pytest.mark.parametrize(
-    ("line", "title", "text", "expected"),
+    ("line", "title", "text", "expected", "options"),
     fixtures,
     ids=[f[1] for f in fixtures],
 )
-def test_format_fixtures(line, title, text, expected):
-    output = mdformat.text(text, extensions={"gfm_alerts"})
+def test_format_fixtures(line, title, text, expected, options):
+    output = mdformat.text(text, extensions={"gfm_alerts"}, options=options)
     print_text(output, expected)
     assert output.rstrip() == expected.rstrip()
