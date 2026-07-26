@@ -25,17 +25,16 @@ different failure mode.
    no flakiness. XSS stays an explicit `_INJECTION_CASES` list, because a probe only
    tests a sink if it actually lands in that sink, which fixtures can't guarantee.
 
-2. **AST reachability check (optional, `scripts/check_regex_reachability.py`).**
+2. **AST reachability check (default, always on, `test_regex_reachability.py`).**
    The gap in layer 1 is silent: if a new regex is anchored past a lead-in that no
    fixture produces (e.g. `` ^```math ``), the fuzz corpus never reaches it and the
-   miss is invisible. This script statically extracts every regex literal from the
+   miss is invisible. This test statically extracts every regex literal from the
    plugin package, reconstructs each pattern's literal prefix, and asserts at least
    one fixture-derived payload contains that prefix. It answers "are we fuzzing every
-   regex?" objectively, and names the ones we aren't. Run it in CI; when it flags a
-   pattern, add a fixture that exercises that syntax (which also improves render
-   coverage). This is the direct answer to "a separate AST script that validates we
-   are fuzzing correctly" — recommended, because it is the only layer that measures
-   completeness instead of assuming it.
+   regex?" objectively, and names the ones we aren't. It runs as part of the normal
+   `pytest` suite, so it rides the existing CI job; when it fails, add a fixture that
+   exercises that syntax (which also improves render coverage). This is the only
+   layer that measures completeness instead of assuming it.
 
 3. **Hypothesis deep-fuzz (optional, opt-in profile).** Layers 1–2 only vary the
    *amplification* of known-shaped inputs. To explore unknown-shaped inputs, add a
@@ -49,9 +48,9 @@ different failure mode.
 
 ## Recommendation
 
-Keep layer 1 always on. Add layer 2 to CI now — it is cheap and it is the piece that
-keeps the corpus honest as regexes accrete. Reach for layer 3 only once the plugin's
-grammar is non-trivial and you want continuous exploration beyond the fixture set.
-The through-line is that fixtures are the single source of truth: they drive rendering
-tests, the ReDoS corpus, the reachability check, and the Hypothesis building blocks,
-so investing in fixture coverage improves every layer at once.
+Keep layers 1 and 2 always on — both are cheap, deterministic, and ride the existing
+`pytest` job. Reach for layer 3 only once the plugin's grammar is non-trivial and you
+want continuous exploration beyond the fixture set. The through-line is that fixtures
+are the single source of truth: they drive rendering tests, the ReDoS corpus, the
+reachability check, and the Hypothesis building blocks, so investing in fixture
+coverage improves every layer at once.
