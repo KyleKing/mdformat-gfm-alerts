@@ -24,8 +24,9 @@ def add_cli_argument_group(group: argparse._ArgumentGroup) -> None:
         action="store_true",
         help=(
             "Preserve an inline custom title on the canonical `[!TYPE]` line. "
-            "This is a Hugo/Obsidian extension to GFM's alerts, not part of "
-            "GitHub's own spec, so it's off by default."
+            "This convention comes from Obsidian's callout spec (Hugo's alert "
+            "syntax mirrors it). It's not part of GitHub's own GFM alerts spec, "
+            "so it's off by default."
         ),
     )
 

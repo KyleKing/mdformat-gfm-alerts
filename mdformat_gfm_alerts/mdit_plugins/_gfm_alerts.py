@@ -51,7 +51,7 @@ class AlertRuleFactory:
     ) -> list[re.Pattern[str]]:
         marker_name_re = "\\w+" if self.titles == ["*"] else "|".join(self.titles)
         flags = 0 if self.match_case_sensitive else re.IGNORECASE
-        # Bound the inline-title capture to a single line; the previous `[^\\n\\r]*` was a raw-string trap that
+        # Bound the inline-title capture to a single line. The previous `[^\\n\\r]*` was a raw-string trap that
         # excluded `\`, `n`, `r` instead of newlines and leaked body text across line breaks.
         return [
             re.compile(
@@ -102,9 +102,11 @@ class AlertRuleFactory:
         title = match.group("title").strip()
         icon = self.icons.get(title.lower(), "")
 
-        # Hugo and Obsidian treat trailing text on the canonical `[!TYPE]` line as a custom title, but that's not
-        # part of GitHub's own GFM alerts spec, so it's only recognized in opt-in `custom_title` mode. The alternate
-        # syntaxes never carried that meaning so keep them on the pre-existing normalize-into-body path.
+        # Obsidian's callout spec (open-ended types, fold indicators, custom titles) is where this convention
+        # originates. Hugo's alert syntax mirrors just the title/fold grammar, restricted to GFM's five types.
+        # This package only replicates the title part, and only when `custom_title` is on, since neither
+        # convention is part of GitHub's own GFM alerts spec. The alternate syntaxes never carried that meaning,
+        # so keep them on the pre-existing normalize-into-body path.
         is_canonical_unescaped = (
             self.custom_title and match_index == 1 and "\\" not in match.group("marker")
         )
@@ -132,7 +134,7 @@ class AlertRuleFactory:
         close_token.type = GFM_ALERT_CLOSE
         close_token.tag = "div"
 
-        # An empty leading paragraph would render as a stray `<p></p>` next to the title; drop it so downstream
+        # An empty leading paragraph would render as a stray `<p></p>` next to the title. Drop it so downstream
         # renderers don't have to filter empty paragraphs out of every alert.
         if is_canonical_unescaped and not first_inline.content:
             inline_index = self._get_first_inline_index(tokens, start_index, end_index)

@@ -1,4 +1,4 @@
-With `custom_title=True`, an inline custom title on the canonical `[!TYPE]` form round-trips (Hugo/Obsidian extension)
+With `custom_title=True`, an inline custom title on the canonical `[!TYPE]` form round-trips (Obsidian callout convention, mirrored by Hugo's alert syntax)
 .
 > [!TIP] **When to use it:**
 >

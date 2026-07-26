@@ -94,7 +94,7 @@ Don't crash on incomplete alert (https://github.com/KyleKing/mdformat-obsidian/i
 > [!NOTE]
 .
 
-Strict GFM (default) folds trailing text on the canonical `[!TYPE]` line into the body; it's not part of GitHub's alerts spec
+Strict GFM (default) folds trailing text on the canonical `[!TYPE]` line into the body. It's not part of GitHub's alerts spec
 .
 > [!TIP] **When to use it:**
 >
