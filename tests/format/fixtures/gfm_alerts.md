@@ -93,3 +93,66 @@ Don't crash on incomplete alert (https://github.com/KyleKing/mdformat-obsidian/i
 .
 > [!NOTE]
 .
+
+Preserves an inline custom title on the canonical `[!TYPE]` form (Hugo/Obsidian extension)
+.
+> [!TIP] **When to use it:**
+>
+> - One bullet.
+> - Another bullet.
+
+> [!NOTE] Inline title with a colon:
+>
+> Body paragraph.
+
+> [!WARNING] Plain inline text
+>
+> Body paragraph.
+.
+> [!TIP] **When to use it:**
+> - One bullet.
+> - Another bullet.
+
+> [!NOTE] Inline title with a colon:
+> Body paragraph.
+
+> [!WARNING] Plain inline text
+> Body paragraph.
+.
+
+Inline title with no body is emitted on the marker line
+.
+> [!TIP] **Standalone title:**
+.
+> [!TIP] **Standalone title:**
+.
+
+Inline title roundtrips through whitespace variations
+.
+> [!TIP]   **Spaced title:**
+> Body.
+.
+> [!TIP] **Spaced title:**
+> Body.
+.
+
+Alternate `**Note**` syntax still normalizes inline text into the body
+.
+> **Note**: A note line.
+
+> **Warning**: A warning line.
+.
+> [!NOTE]
+> A note line.
+
+> [!WARNING]
+> A warning line.
+.
+
+Escaped brackets still normalize inline text into the body
+.
+> \[!NOTE\] Useful information that users should know.
+.
+> [!NOTE]
+> Useful information that users should know.
+.

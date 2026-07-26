@@ -49,13 +49,15 @@ class AlertRuleFactory:
     ) -> list[re.Pattern[str]]:
         marker_name_re = "\\w+" if self.titles == ["*"] else "|".join(self.titles)
         flags = 0 if self.match_case_sensitive else re.IGNORECASE
+        # Bound the inline-title capture to a single line; the previous `[^\\n\\r]*` was a raw-string trap that
+        # excluded `\`, `n`, `r` instead of newlines and leaked body text across line breaks.
         return [
             re.compile(
-                r"^(?P<marker>\*\*(?P<title>(Note|Warning))\*\*:?)\s*(?P<inline>[^\\n\\r]*)?",
+                r"^(?P<marker>\*\*(?P<title>(Note|Warning))\*\*:?)[ \t]*(?P<inline>[^\n\r]*)",
                 flags=flags,
             ),
             re.compile(
-                rf"^(?P<marker>\\?\[!(?P<title>({marker_name_re}))\\?\])\s*(?P<inline>[^\\n\\r]*)?",
+                rf"^(?P<marker>\\?\[!(?P<title>({marker_name_re}))\\?\])[ \t]*(?P<inline>[^\n\r]*)",
                 flags=flags,
             ),
         ]
@@ -67,29 +69,47 @@ class AlertRuleFactory:
             None,
         )
 
+    @staticmethod
+    def _get_first_inline_index(tokens: list[Token], start: int, end: int) -> int:
+        for index in range(start, end + 1):
+            if tokens[index].type == "inline":
+                return index
+        return -1
+
     def _block_to_alerts_if_matched(
         self,
         tokens: list[Token],
         start_index: int,
         end_index: int,
-    ) -> None:
+    ) -> int:
         first_inline = self._get_first_inline(tokens, start_index, end_index)
         if not first_inline:
-            return
+            return 0
 
-        match = self.patterns[0].match(first_inline.content) or self.patterns[1].match(
-            first_inline.content,
-        )
+        match_index = -1
+        match = None
+        for pattern_index, pattern in enumerate(self.patterns):
+            match = pattern.match(first_inline.content)
+            if match:
+                match_index = pattern_index
+                break
 
         if not match:
-            return
+            return 0
 
         title = match.group("title").strip()
         icon = self.icons.get(title.lower(), "")
 
-        first_inline.content = first_inline.content[
-            len(match.group("marker")) :
-        ].lstrip()
+        # Hugo and Obsidian treat trailing text on the canonical `[!TYPE]` line as a custom title; the alternate
+        # syntaxes never carried that meaning so keep them on the pre-existing normalize-into-body path.
+        is_canonical_unescaped = match_index == 1 and "\\" not in match.group("marker")
+        inline = match.group("inline") or ""
+        if is_canonical_unescaped:
+            inline_title = inline.strip()
+            first_inline.content = first_inline.content[match.end() :].lstrip()
+        else:
+            inline_title = ""
+            first_inline.content = first_inline.content[len(match.group("marker")) :].lstrip()
 
         open_token = tokens[start_index]
         close_token = tokens[end_index]
@@ -99,10 +119,25 @@ class AlertRuleFactory:
         open_token.meta = {
             "title": title,
             "icon": icon,
+            "inline_title": inline_title,
         }
 
         close_token.type = GFM_ALERT_CLOSE
         close_token.tag = "div"
+
+        # An empty leading paragraph would render as a stray `<p></p>` next to the title; drop it so downstream
+        # renderers don't have to filter empty paragraphs out of every alert.
+        if is_canonical_unescaped and not first_inline.content:
+            inline_index = self._get_first_inline_index(tokens, start_index, end_index)
+            if (
+                inline_index > 0
+                and tokens[inline_index - 1].type == "paragraph_open"
+                and inline_index + 1 <= end_index
+                and tokens[inline_index + 1].type == "paragraph_close"
+            ):
+                del tokens[inline_index - 1 : inline_index + 2]
+                return 3
+        return 0
 
     def get_rule(self) -> Callable[[StateCore], None]:
         def github_alerts_rule(state: StateCore) -> None:
@@ -115,11 +150,13 @@ class AlertRuleFactory:
                 elif tokens[i].type == "blockquote_close":
                     start_index = start_indices.pop()
                     if self.parse_nested or not start_indices:
-                        self._block_to_alerts_if_matched(
+                        removed = self._block_to_alerts_if_matched(
                             tokens,
                             start_index,
                             end_index=i,
                         )
+                        # Rewind past any deletions so the outer cursor stays aligned with the token list.
+                        i -= removed
                 i += 1
 
         return github_alerts_rule
@@ -144,6 +181,8 @@ def gfm_alerts_plugin(
 
     md.core.ruler.after("block", GFM_ALERTS_PREFIX, github_alerts_rule)
 
+    inline_md = MarkdownIt()
+
     def render_alert_open(
         self: RendererProtocol,  # ruff: ignore[unused-function-argument]
         tokens: list[Token],
@@ -152,10 +191,15 @@ def gfm_alerts_plugin(
         env,  # ruff: ignore[missing-type-function-argument, unused-function-argument]
     ) -> str:
         meta = tokens[idx].meta
+        inline_title = meta.get("inline_title", "")
+        if inline_title:
+            title_html = inline_md.renderInline(inline_title)
+        else:
+            title_html = meta["title"].title()
         return (
             f'<div class="{class_prefix} {class_prefix}-{meta["title"].lower()}">\n'
             f'<p class="{class_prefix}-title">'
-            f"{meta['icon']}{meta['title'].title()}</p>\n"
+            f"{meta['icon']}{title_html}</p>\n"
         )
 
     def render_alert_close(

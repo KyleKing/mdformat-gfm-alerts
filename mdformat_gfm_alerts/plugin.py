@@ -23,6 +23,10 @@ def _render_alert(node: RenderTreeNode, context: RenderContext) -> str:
 
         result = f"> [!{open_token.meta['title'].upper()}]"
 
+        inline_title = open_token.meta.get("inline_title", "")
+        if inline_title:
+            result += f" {inline_title}"
+
         open_token.type = "blockquote_open"
         open_token.tag = "blockquote"
         open_token.meta = {}
