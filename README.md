@@ -6,11 +6,27 @@ An [mdformat](https://github.com/executablebooks/mdformat) plugin for [GFM Alert
 
 ## Scope
 
-This package targets the alert syntax GitHub itself renders: `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, and `[!CAUTION]` alone on their own line, per [GitHub's alerts spec](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts). Custom titles and fold indicators (`[!TIP]+ Title`) aren't part of that spec, so this package doesn't add them, even though other renderers (Obsidian, Hugo) recognize that extended syntax.
+By default, this package targets the alert syntax GitHub itself renders: `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, and `[!CAUTION]` alone on their own line, per [GitHub's alerts spec](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts). Custom titles (`[!TIP] Title`) and fold indicators aren't part of that spec, so trailing text on the marker line is folded into the alert body rather than treated as a title, matching how GitHub itself would render it.
 
-If you need those extensions:
+Some other renderers (Hugo, Obsidian) recognize custom titles as an extension to this syntax. Pass `--goldmark` (or the `goldmark` option, see [Configuration](#configuration)) to preserve an inline title on the canonical `[!TYPE]` line instead of folding it into the body. This package still won't support Obsidian's open-ended callout types or fold indicators; for that:
 
+- [mdformat-hugo](https://github.com/gaborbernat/mdformat-hugo) bundles this package alongside Hugo-specific shortcode and markdown-attribute formatting
 - [mdformat-obsidian](https://github.com/kyleking/mdformat-obsidian) fully supports GFM-style alerts plus custom titles, folding, and Obsidian's open-ended callout types
+
+## Configuration
+
+`--goldmark` (CLI), `goldmark = true` under `[plugin.gfm_alerts]` (`.mdformat.toml`), or `options={"goldmark": True}` (API) preserves an inline custom title on the canonical `[!TYPE]` line instead of folding it into the body:
+
+```md
+<!-- Strict GFM (default): -->
+> [!TIP]
+> Custom title
+> Body.
+
+<!-- With --goldmark: -->
+> [!TIP] Custom title
+> Body.
+```
 
 ## `mdformat` Usage
 
@@ -51,7 +67,7 @@ from markdown_it import MarkdownIt
 from mdformat_gfm_alerts.mdit_plugins import gfm_alerts_plugin
 
 md = MarkdownIt()
-md.use(gfm_alerts_plugin)
+md.use(gfm_alerts_plugin)  # pass goldmark=True to preserve inline custom titles
 
 text = """
 > [!WARNING]
