@@ -21,7 +21,8 @@ def add_cli_argument_group(group: argparse._ArgumentGroup) -> None:
     """
     group.add_argument(
         "--custom-title",
-        action="store_true",
+        action="store_const",
+        const=True,
         help=(
             "Preserve an inline custom title on the canonical `[!TYPE]` line. "
             "This convention comes from Obsidian's callout spec (Hugo's alert "
