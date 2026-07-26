@@ -1,31 +1,25 @@
-"""Assert every regex in the plugin is reachable by the fuzz corpus.
+"""AST reachability check: every plugin regex must be reached by a render fixture.
 
-The behavioral guard in 'tests/render/test_security.py' amplifies the render
-fixtures, but a regex anchored past a lead-in that no fixture produces (e.g.
-``^```math``) is never reached, and the miss is silent. This script closes that
-gap: it statically extracts every regex literal from the plugin package,
-reconstructs each pattern's leading literal, and checks that at least one
-fixture-derived payload contains it. Patterns with no reaching payload are
-reported so a fixture can be added.
+The behavioral guard in `test_security.py` amplifies the render fixtures, but a
+regex anchored past a lead-in that no fixture produces (e.g. ``^```math``) is never
+reached, and the miss is silent. This test closes that gap: it statically extracts
+every regex literal from the plugin package, reconstructs each pattern's leading
+literal, and asserts that at least one fixture-derived payload contains it.
 
-Run from the repo root: ``python scripts/check_regex_reachability.py``.
-Exits non-zero (and is CI-friendly) when a pattern is unreachable.
+See `SECURITY_GUARD.md` for how this fits alongside the fixture-derived ReDoS/XSS
+guard and the optional Hypothesis deep-fuzz.
 """
-
-# ruff:file-ignore[print]
 
 from __future__ import annotations
 
 import ast
-import sys
 from pathlib import Path
 
+import pytest
 from markdown_it.utils import read_fixture_file
 
-PACKAGE = Path(__file__).parent.parent / "mdformat_gfm_alerts"
-FIXTURE_PATH = (
-    Path(__file__).parent.parent / "tests" / "render" / "fixtures" / "gfm_alerts.md"
-)
+PACKAGE = Path(__file__).parents[2] / "mdformat_gfm_alerts"
+FIXTURE_PATH = Path(__file__).parent / "fixtures"
 
 _RE_FUNCS = {"compile", "match", "search", "fullmatch", "findall", "finditer", "sub"}
 # Metacharacters that end the run of leading literal characters.
@@ -93,30 +87,25 @@ def _iter_regex_literals() -> list[tuple[str, str]]:
 
 
 def _fixture_corpus() -> str:
-    if not FIXTURE_PATH.is_file():
-        return ""
-    return "\n".join(text for _l, _t, text, _e in read_fixture_file(FIXTURE_PATH))
+    return "\n".join(
+        text
+        for path in sorted(FIXTURE_PATH.glob("*.md"))
+        for _l, _t, text, _e in read_fixture_file(path)
+    )
 
 
-def main() -> int:
-    """Report any plugin regex the render fixtures never reach; exit non-zero if so."""
-    corpus = _fixture_corpus()
-    unreachable: list[tuple[str, str]] = []
-    for where, pattern in _iter_regex_literals():
-        prefix = _literal_prefix(pattern)
-        # An empty prefix matches everywhere (unanchored), so it is trivially reachable.
-        if prefix and prefix not in corpus:
-            unreachable.append((where, pattern))
-
-    if unreachable:
-        print("Regex patterns not reached by any render fixture:")
-        for where, pattern in unreachable:
-            print(f"  {where}: {pattern!r}  (add a fixture exercising this syntax)")
-        return 1
-
-    print("All plugin regexes are reachable by the render fixtures.")
-    return 0
+_REGEX_LITERALS = _iter_regex_literals()
 
 
-if __name__ == "__main__":
-    sys.exit(main())
+@pytest.mark.parametrize(
+    ("where", "pattern"), _REGEX_LITERALS, ids=[w for w, _p in _REGEX_LITERALS]
+)
+def test_regex_is_reachable(where: str, pattern: str) -> None:
+    prefix = _literal_prefix(pattern)
+    # An empty prefix matches everywhere (unanchored), so it is trivially reachable.
+    if not prefix:
+        return
+    assert prefix in _fixture_corpus(), (
+        f"{where}: {pattern!r} is never reached by a render fixture "
+        "(add a fixture exercising this syntax)"
+    )
