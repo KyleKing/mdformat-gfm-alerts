@@ -31,6 +31,7 @@ class AlertRuleFactory:
         *,
         parse_nested: bool = True,
         match_case_sensitive: bool = False,
+        goldmark: bool = False,
     ) -> None:
         if titles is None:
             titles = DEFAULT_TITLES
@@ -42,6 +43,7 @@ class AlertRuleFactory:
         self.class_prefix = class_prefix
         self.parse_nested = parse_nested
         self.match_case_sensitive = match_case_sensitive
+        self.goldmark = goldmark
 
     @cached_property
     def patterns(
@@ -100,16 +102,21 @@ class AlertRuleFactory:
         title = match.group("title").strip()
         icon = self.icons.get(title.lower(), "")
 
-        # Hugo and Obsidian treat trailing text on the canonical `[!TYPE]` line as a custom title; the alternate
+        # Hugo and Obsidian treat trailing text on the canonical `[!TYPE]` line as a custom title, but that's not
+        # part of GitHub's own GFM alerts spec, so it's only recognized in opt-in `goldmark` mode. The alternate
         # syntaxes never carried that meaning so keep them on the pre-existing normalize-into-body path.
-        is_canonical_unescaped = match_index == 1 and "\\" not in match.group("marker")
+        is_canonical_unescaped = (
+            self.goldmark and match_index == 1 and "\\" not in match.group("marker")
+        )
         inline = match.group("inline") or ""
         if is_canonical_unescaped:
             inline_title = inline.strip()
             first_inline.content = first_inline.content[match.end() :].lstrip()
         else:
             inline_title = ""
-            first_inline.content = first_inline.content[len(match.group("marker")) :].lstrip()
+            first_inline.content = first_inline.content[
+                len(match.group("marker")) :
+            ].lstrip()
 
         open_token = tokens[start_index]
         close_token = tokens[end_index]
@@ -170,6 +177,7 @@ def gfm_alerts_plugin(
     *,
     parse_nested: bool = True,
     match_case_sensitive: bool = False,
+    goldmark: bool = False,
 ) -> None:
     github_alerts_rule = AlertRuleFactory(
         titles=titles,
@@ -177,11 +185,10 @@ def gfm_alerts_plugin(
         class_prefix=class_prefix,
         parse_nested=parse_nested,
         match_case_sensitive=match_case_sensitive,
+        goldmark=goldmark,
     ).get_rule()
 
     md.core.ruler.after("block", GFM_ALERTS_PREFIX, github_alerts_rule)
-
-    inline_md = MarkdownIt()
 
     def render_alert_open(
         self: RendererProtocol,  # ruff: ignore[unused-function-argument]
@@ -193,7 +200,7 @@ def gfm_alerts_plugin(
         meta = tokens[idx].meta
         inline_title = meta.get("inline_title", "")
         if inline_title:
-            title_html = inline_md.renderInline(inline_title)
+            title_html = md.renderInline(inline_title)
         else:
             title_html = meta["title"].title()
         return (

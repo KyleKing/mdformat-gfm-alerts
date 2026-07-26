@@ -4,6 +4,14 @@
 
 An [mdformat](https://github.com/executablebooks/mdformat) plugin for [GFM Alerts](https://github.com/orgs/community/discussions/16925). For the JS markdown-it equivalent, see [antfu/markdown-it-github-alerts](https://github.com/antfu/markdown-it-github-alerts)
 
+## Scope
+
+This package targets the alert syntax GitHub itself renders: `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, and `[!CAUTION]` alone on their own line, per [GitHub's alerts spec](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts). Custom titles and fold indicators (`[!TIP]+ Title`) aren't part of that spec, so this package doesn't add them, even though other renderers (Obsidian, Hugo) recognize that extended syntax.
+
+If you need those extensions:
+
+- [mdformat-obsidian](https://github.com/kyleking/mdformat-obsidian) fully supports GFM-style alerts plus custom titles, folding, and Obsidian's open-ended callout types
+
 ## `mdformat` Usage
 
 Add this package wherever you use `mdformat` and the plugin will be auto-recognized. No additional configuration necessary. See [additional information on `mdformat` plugins here](https://mdformat.readthedocs.io/en/stable/users/plugins.html)

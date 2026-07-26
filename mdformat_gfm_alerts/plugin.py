@@ -2,18 +2,38 @@
 
 from __future__ import annotations
 
+import argparse
 from collections.abc import Mapping
 
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
 
+from ._helpers import get_conf
 from .mdit_plugins import GFM_ALERTS_PREFIX, gfm_alerts_plugin
+
+
+def add_cli_argument_group(group: argparse._ArgumentGroup) -> None:
+    """Add options to the mdformat CLI.
+
+    Stored in `mdit.options["mdformat"]["plugin"]["gfm_alerts"]`
+
+    """
+    group.add_argument(
+        "--goldmark",
+        action="store_true",
+        help=(
+            "Preserve an inline custom title on the canonical `[!TYPE]` line. "
+            "This is a Hugo/Obsidian extension to GFM's alerts, not part of "
+            "GitHub's own spec, so it's off by default."
+        ),
+    )
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser to identify Alerts."""
-    mdit.use(gfm_alerts_plugin)
+    goldmark = bool(get_conf(mdit.options, "goldmark"))
+    mdit.use(gfm_alerts_plugin, goldmark=goldmark)
 
 
 def _render_alert(node: RenderTreeNode, context: RenderContext) -> str:
