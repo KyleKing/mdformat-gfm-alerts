@@ -1,4 +1,4 @@
-With `goldmark=True`, an inline custom title on the canonical `[!TYPE]` form round-trips (Hugo/Obsidian extension)
+With `custom_title=True`, an inline custom title on the canonical `[!TYPE]` form round-trips (Hugo/Obsidian extension)
 .
 > [!TIP] **When to use it:**
 >
@@ -24,14 +24,14 @@ With `goldmark=True`, an inline custom title on the canonical `[!TYPE]` form rou
 > Body paragraph.
 .
 
-With `goldmark=True`, an inline title with no body is emitted on the marker line
+With `custom_title=True`, an inline title with no body is emitted on the marker line
 .
 > [!TIP] **Standalone title:**
 .
 > [!TIP] **Standalone title:**
 .
 
-With `goldmark=True`, an inline title round-trips through whitespace variations
+With `custom_title=True`, an inline title round-trips through whitespace variations
 .
 > [!TIP]   **Spaced title:**
 > Body.
@@ -40,7 +40,7 @@ With `goldmark=True`, an inline title round-trips through whitespace variations
 > Body.
 .
 
-With `goldmark=True`, alternate `**Note**` syntax still normalizes into the body (only the canonical unescaped `[!TYPE]` form carries a title)
+With `custom_title=True`, alternate `**Note**` syntax still normalizes into the body (only the canonical unescaped `[!TYPE]` form carries a title)
 .
 > **Note**: A note line.
 .
@@ -48,7 +48,7 @@ With `goldmark=True`, alternate `**Note**` syntax still normalizes into the body
 > A note line.
 .
 
-With `goldmark=True`, escaped brackets still normalize inline text into the body
+With `custom_title=True`, escaped brackets still normalize inline text into the body
 .
 > \[!NOTE\] Useful information that users should know.
 .

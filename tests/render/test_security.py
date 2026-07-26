@@ -42,12 +42,12 @@ _BUDGET_SECONDS = 0.5
 
 
 def _make_md() -> MarkdownIt:
-    return MarkdownIt("commonmark").use(gfm_alerts_plugin, goldmark=True)
+    return MarkdownIt("commonmark").use(gfm_alerts_plugin, custom_title=True)
 
 
 def _fixture_inputs() -> list[str]:
     inputs = []
-    for filename in ("gfm_alerts.md", "gfm_alerts_goldmark.md"):
+    for filename in ("gfm_alerts.md", "gfm_alerts_custom_title.md"):
         path = FIXTURE_PATH / filename
         if path.is_file():
             inputs.extend(

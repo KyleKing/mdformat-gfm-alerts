@@ -1,4 +1,4 @@
-With `goldmark=True`, canonical unescaped `[!TYPE]` with an inline custom title renders the title in place of the type name
+With `custom_title=True`, canonical unescaped `[!TYPE]` with an inline custom title renders the title in place of the type name
 .
 > [!TIP] **When to use it:**
 >
@@ -10,7 +10,7 @@ With `goldmark=True`, canonical unescaped `[!TYPE]` with an inline custom title 
 </div>
 .
 
-With `goldmark=True`, an inline title without a body still renders
+With `custom_title=True`, an inline title without a body still renders
 .
 > [!NOTE] Custom title:
 .
@@ -19,7 +19,7 @@ With `goldmark=True`, an inline title without a body still renders
 </div>
 .
 
-With `goldmark=True`, escaped brackets still fall back to the type name (only the canonical unescaped form carries a title)
+With `custom_title=True`, escaped brackets still fall back to the type name (only the canonical unescaped form carries a title)
 .
 > \[!Note\] This is an inline "Note"
 .

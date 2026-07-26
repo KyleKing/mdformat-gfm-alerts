@@ -31,7 +31,7 @@ class AlertRuleFactory:
         *,
         parse_nested: bool = True,
         match_case_sensitive: bool = False,
-        goldmark: bool = False,
+        custom_title: bool = False,
     ) -> None:
         if titles is None:
             titles = DEFAULT_TITLES
@@ -43,7 +43,7 @@ class AlertRuleFactory:
         self.class_prefix = class_prefix
         self.parse_nested = parse_nested
         self.match_case_sensitive = match_case_sensitive
-        self.goldmark = goldmark
+        self.custom_title = custom_title
 
     @cached_property
     def patterns(
@@ -103,10 +103,10 @@ class AlertRuleFactory:
         icon = self.icons.get(title.lower(), "")
 
         # Hugo and Obsidian treat trailing text on the canonical `[!TYPE]` line as a custom title, but that's not
-        # part of GitHub's own GFM alerts spec, so it's only recognized in opt-in `goldmark` mode. The alternate
+        # part of GitHub's own GFM alerts spec, so it's only recognized in opt-in `custom_title` mode. The alternate
         # syntaxes never carried that meaning so keep them on the pre-existing normalize-into-body path.
         is_canonical_unescaped = (
-            self.goldmark and match_index == 1 and "\\" not in match.group("marker")
+            self.custom_title and match_index == 1 and "\\" not in match.group("marker")
         )
         inline = match.group("inline") or ""
         if is_canonical_unescaped:
@@ -177,7 +177,7 @@ def gfm_alerts_plugin(
     *,
     parse_nested: bool = True,
     match_case_sensitive: bool = False,
-    goldmark: bool = False,
+    custom_title: bool = False,
 ) -> None:
     github_alerts_rule = AlertRuleFactory(
         titles=titles,
@@ -185,7 +185,7 @@ def gfm_alerts_plugin(
         class_prefix=class_prefix,
         parse_nested=parse_nested,
         match_case_sensitive=match_case_sensitive,
-        goldmark=goldmark,
+        custom_title=custom_title,
     ).get_rule()
 
     md.core.ruler.after("block", GFM_ALERTS_PREFIX, github_alerts_rule)

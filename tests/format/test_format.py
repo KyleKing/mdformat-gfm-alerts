@@ -24,7 +24,7 @@ def with_options(filename, options):
 
 fixtures = [
     *with_options("gfm_alerts.md", {}),
-    *with_options("gfm_alerts_goldmark.md", {"goldmark": True}),
+    *with_options("gfm_alerts_custom_title.md", {"custom_title": True}),
 ]
 
 

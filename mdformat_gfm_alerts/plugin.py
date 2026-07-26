@@ -20,7 +20,7 @@ def add_cli_argument_group(group: argparse._ArgumentGroup) -> None:
 
     """
     group.add_argument(
-        "--goldmark",
+        "--custom-title",
         action="store_true",
         help=(
             "Preserve an inline custom title on the canonical `[!TYPE]` line. "
@@ -32,8 +32,8 @@ def add_cli_argument_group(group: argparse._ArgumentGroup) -> None:
 
 def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser to identify Alerts."""
-    goldmark = bool(get_conf(mdit.options, "goldmark"))
-    mdit.use(gfm_alerts_plugin, goldmark=goldmark)
+    custom_title = bool(get_conf(mdit.options, "custom_title"))
+    mdit.use(gfm_alerts_plugin, custom_title=custom_title)
 
 
 def _render_alert(node: RenderTreeNode, context: RenderContext) -> str:

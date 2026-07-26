@@ -20,8 +20,8 @@ def with_plugin(filename, plugins):
     [
         *with_plugin("gfm_alerts.md", [gfm_alerts_plugin]),
         *with_plugin(
-            "gfm_alerts_goldmark.md",
-            [partial(gfm_alerts_plugin, goldmark=True)],
+            "gfm_alerts_custom_title.md",
+            [partial(gfm_alerts_plugin, custom_title=True)],
         ),
     ],
 )
