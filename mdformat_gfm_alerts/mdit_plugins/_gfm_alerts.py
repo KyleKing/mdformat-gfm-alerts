@@ -11,6 +11,8 @@ from markdown_it.renderer import RendererProtocol
 from markdown_it.rules_core import StateCore
 from markdown_it.token import Token
 
+from mdformat_gfm_alerts._helpers import get_conf
+
 GFM_ALERTS_PREFIX = "gfm_alert"
 """Prefix used to differentiate the parsed output."""
 
@@ -83,6 +85,8 @@ class AlertRuleFactory:
         tokens: list[Token],
         start_index: int,
         end_index: int,
+        *,
+        custom_title: bool,
     ) -> int:
         first_inline = self._get_first_inline(tokens, start_index, end_index)
         if not first_inline:
@@ -108,7 +112,7 @@ class AlertRuleFactory:
         # convention is part of GitHub's own GFM alerts spec. The alternate syntaxes never carried that meaning,
         # so keep them on the pre-existing normalize-into-body path.
         is_canonical_unescaped = (
-            self.custom_title and match_index == 1 and "\\" not in match.group("marker")
+            custom_title and match_index == 1 and "\\" not in match.group("marker")
         )
         inline = match.group("inline") or ""
         if is_canonical_unescaped:
@@ -150,6 +154,17 @@ class AlertRuleFactory:
 
     def get_rule(self) -> Callable[[StateCore], None]:
         def github_alerts_rule(state: StateCore) -> None:
+            # Read lazily, at render time, rather than closing over a value computed when this rule was
+            # registered: mdformat runs every extension's `update_mdit` in an unguaranteed order, so a
+            # value baked in at registration time could be stale by the time a sibling extension (or the
+            # caller) finishes configuring options. By render time every extension has already registered.
+            mdformat_opts = state.md.options.get("mdformat")
+            custom_title = (
+                bool(get_conf(state.md.options, "custom_title"))
+                if mdformat_opts is not None
+                else self.custom_title
+            )
+
             tokens = state.tokens
             i = 0
             start_indices = []
@@ -163,6 +178,7 @@ class AlertRuleFactory:
                             tokens,
                             start_index,
                             end_index=i,
+                            custom_title=custom_title,
                         )
                         # Rewind past any deletions so the outer cursor stays aligned with the token list.
                         i -= removed

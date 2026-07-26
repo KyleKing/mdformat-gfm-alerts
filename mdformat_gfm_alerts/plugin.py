@@ -9,7 +9,6 @@ from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
 
-from ._helpers import get_conf
 from .mdit_plugins import GFM_ALERTS_PREFIX, gfm_alerts_plugin
 
 
@@ -34,8 +33,7 @@ def add_cli_argument_group(group: argparse._ArgumentGroup) -> None:
 
 def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser to identify Alerts."""
-    custom_title = bool(get_conf(mdit.options, "custom_title"))
-    mdit.use(gfm_alerts_plugin, custom_title=custom_title)
+    mdit.use(gfm_alerts_plugin)
 
 
 def _render_alert(node: RenderTreeNode, context: RenderContext) -> str:
