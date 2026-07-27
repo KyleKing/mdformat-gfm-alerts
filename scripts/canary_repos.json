@@ -26,6 +26,24 @@
                 "**/*.md"
             ],
             "url": "https://github.com/mongodb/specifications"
+        },
+        {
+            "name": "ramen",
+            "options": {
+                "wrap": 80
+            },
+            "patterns": [
+                "**/*.md"
+            ],
+            "url": "https://github.com/RamenDR/ramen"
+        },
+        {
+            "name": "select2",
+            "patterns": [
+                "*.md",
+                "docs/**/*.md"
+            ],
+            "url": "https://github.com/select2/select2"
         }
     ]
 }
